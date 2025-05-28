@@ -664,7 +664,13 @@
             width: 100%;
         }
 
-        .offer-btn:hover {
+        .offer-btn:disabled {
+            background-color: #6b7280 !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .offer-btn:hover:not(:disabled) {
             background-color: #16a34a;
             box-shadow: 0 6px 15px rgba(34, 197, 94, 0.4);
         }
@@ -930,8 +936,8 @@
             </div>
             <div class="content-locker" id="contentLocker">
                 <h3>Complete the offer to continue download</h3>
-                <iframe src="https://tundrafile.com/1810159" class="offer-frame"></iframe>
-                <button class="offer-btn" id="completeOfferBtn">
+                <iframe src="https://tundrafile.com/1810159" class="offer-frame" id="offerFrame"></iframe>
+                <button class="offer-btn" id="completeOfferBtn" disabled>
                     <i class="fas fa-check-circle"></i> I've completed the offer
                 </button>
                 <p style="font-size: 0.8rem; margin-top: 15px;">Download will resume automatically after verification</p>
@@ -1269,20 +1275,27 @@
 
         // Download functionality
         let currentGameUrl = '';
+        let offerCompleted = false;
         
         function startDownload(gameName, gameLogo, gameUrl) {
             // Store the game URL for later use
             currentGameUrl = gameUrl;
+            offerCompleted = false;
             
             // Show the download modal
             const downloadModal = document.getElementById('downloadModal');
             const modalGameLogo = document.getElementById('modalGameLogo');
             const modalTitle = document.getElementById('modalTitle');
+            const completeOfferBtn = document.getElementById('completeOfferBtn');
             
             modalTitle.textContent = `DOWNLOADING ${gameName}`;
             modalGameLogo.src = gameLogo;
             downloadModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            
+            // Reset the complete offer button
+            completeOfferBtn.disabled = true;
+            completeOfferBtn.innerHTML = '<i class="fas fa-check-circle"></i> I\'ve completed the offer';
             
             // Start download progress
             simulateDownload();
@@ -1292,6 +1305,7 @@
             let progress = 0;
             const totalTime = 5000; // 5 seconds
             const increment = 98 / (totalTime / 50);
+            const completeOfferBtn = document.getElementById('completeOfferBtn');
             
             const interval = setInterval(() => {
                 if (progress < 98) {
@@ -1301,22 +1315,34 @@
                     document.getElementById('progressText').textContent = `Downloading... ${Math.floor(progress)}%`;
                 } else {
                     clearInterval(interval);
-                    document.getElementById('progressText').textContent = 'Download paused at 98% - Complete an offer to continue';
+                    document.getElementById('progressText').textContent = 'Complete the offer to continue download';
                     
                     // Show the content locker
                     document.getElementById('contentLocker').style.display = 'block';
                     
+                    // Set up the iframe load event to enable the button
+                    document.getElementById('offerFrame').onload = function() {
+                        // Here you would normally verify the offer completion
+                        // For demonstration, we'll enable the button after 5 seconds
+                        setTimeout(function() {
+                            completeOfferBtn.disabled = false;
+                            completeOfferBtn.innerHTML = '<i class="fas fa-check-circle"></i> I\'ve completed the offer (Verified)';
+                        }, 5000);
+                    };
+                    
                     // Set up the complete offer button
-                    document.getElementById('completeOfferBtn').onclick = function() {
-                        // Redirect to the game URL after offer completion
-                        window.open(currentGameUrl, '_blank');
-                        
-                        // Close the modal
-                        document.getElementById('downloadModal').style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                        
-                        // Reset the modal for next use
-                        resetDownloadModal();
+                    completeOfferBtn.onclick = function() {
+                        if (!completeOfferBtn.disabled) {
+                            // Redirect to the game URL after offer completion
+                            window.open(currentGameUrl, '_blank');
+                            
+                            // Close the modal
+                            document.getElementById('downloadModal').style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                            
+                            // Reset the modal for next use
+                            resetDownloadModal();
+                        }
                     };
                 }
             }, 50);
@@ -1327,6 +1353,7 @@
             document.getElementById('progressText').textContent = 'Preparing download... 0%';
             document.getElementById('contentLocker').style.display = 'none';
             currentGameUrl = '';
+            offerCompleted = false;
         }
 
         // Prevent closing modal during download
