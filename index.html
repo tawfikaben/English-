@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1394,22 +1394,20 @@
                         setTimeout(function() {
                             completeOfferBtn.disabled = false;
                             completeOfferBtn.innerHTML = '<i class="fas fa-check-circle"></i> I\'ve completed the offer (Verified)';
+                            
+                            // عند النقر على الزر، افتح رابط اللعبة مباشرةً
+                            completeOfferBtn.onclick = function() {
+                                if (!completeOfferBtn.disabled) {
+                                    // افتح الرابط في نافذة جديدة
+                                    window.open(currentGameUrl, '_blank');
+                                    
+                                    // أغلق المودال وأعد تعيينه
+                                    document.getElementById('downloadModal').style.display = 'none';
+                                    document.body.style.overflow = 'auto';
+                                    resetDownloadModal();
+                                }
+                            };
                         }, 5000);
-                    };
-                    
-                    // Set up the complete offer button
-                    completeOfferBtn.onclick = function() {
-                        if (!completeOfferBtn.disabled) {
-                            // Redirect to the game URL after offer completion
-                            window.open(currentGameUrl, '_blank');
-                            
-                            // Close the modal
-                            document.getElementById('downloadModal').style.display = 'none';
-                            document.body.style.overflow = 'auto';
-                            
-                            // Reset the modal for next use
-                            resetDownloadModal();
-                        }
                     };
                 }
             }, 50);
