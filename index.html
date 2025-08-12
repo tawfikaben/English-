@@ -1,937 +1,190 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bXgame98 - Premium Game Downloads</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <title>🎮 Premium Games Hub - Free Gaming Portal</title>
+    <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
         }
-        
-        :root {
-            /* Light Mode Colors - Blue/Purple Scheme */
-            --primary-light: #5E72E4;
-            --primary-dark-light: #4A5BD2;
-            --secondary-light: #825EE4;
-            --dark-light: #1A1A2E;
-            --light-light: #F8F9FA;
-            --gray-light: #6C757D;
-            --card-bg-light: #FFFFFF;
-            --card-hover-light: #F1F3F5;
-            --background-light: #F5F7FB;
-            --header-bg-light: rgba(255, 255, 255, 0.95);
-            --text-light: #1A1A2E;
-            --border-light: #E0E0E0;
-            
-            /* Dark Mode Colors - Blue/Purple Scheme */
-            --primary-dark: #5E72E4;
-            --primary-dark-dark: #4A5BD2;
-            --secondary-dark: #825EE4;
-            --dark-dark: #0F0F1A;
-            --light-dark: #E6E6E6;
-            --gray-dark: #8E8E8E;
-            --card-bg-dark: #1E1E2E;
-            --card-hover-dark: #2A2A3A;
-            --background-dark: #12121A;
-            --header-bg-dark: rgba(30, 30, 46, 0.95);
-            --text-dark: #E6E6E6;
-            --border-dark: #3A3A4A;
-            
-            /* Current Theme Variables */
-            --primary: var(--primary-light);
-            --primary-dark: var(--primary-dark-light);
-            --secondary: var(--secondary-light);
-            --dark: var(--dark-light);
-            --light: var(--light-light);
-            --gray: var(--gray-light);
-            --card-bg: var(--card-bg-light);
-            --card-hover: var(--card-hover-light);
-            --background: var(--background-light);
-            --header-bg: var(--header-bg-light);
-            --text: var(--text-light);
-            --border: var(--border-light);
-        }
-        
-        [data-theme="dark"] {
-            --primary: var(--primary-dark);
-            --primary-dark: var(--primary-dark-dark);
-            --secondary: var(--secondary-dark);
-            --dark: var(--dark-dark);
-            --light: var(--light-dark);
-            --gray: var(--gray-dark);
-            --card-bg: var(--card-bg-dark);
-            --card-hover: var(--card-hover-dark);
-            --background: var(--background-dark);
-            --header-bg: var(--header-bg-dark);
-            --text: var(--text-dark);
-            --border: var(--border-dark);
-        }
-        
-        [dir="rtl"] {
-            direction: rtl;
-        }
-        
-        body {
-            background-color: var(--background);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-        
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--header-bg);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .header {
+            text-align: center;
             padding: 20px 0;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
-        
-        .logo {
+        .game-card {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
         }
-        
-        .logo h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .game-card:hover {
+            transform: translateY(-5px);
         }
-        
-        .logo-icon {
-            font-size: 28px;
-            color: var(--primary);
+        .game-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid #6e48aa;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
+        .game-info {
+            flex: 1;
         }
-        
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #6e48aa;
         }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.05);
+        .action-btn, .more-btn {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
             border-radius: 50px;
-            padding: 8px 15px;
+            font-weight: bold;
+            cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid var(--border);
+            min-width: 120px;
+            text-align: center;
+            margin: 5px;
         }
-        
-        [data-theme="dark"] .search-bar {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .search-bar:focus-within {
-            box-shadow: 0 0 0 2px var(--primary);
-        }
-        
-        .search-bar input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: var(--text);
+        .more-btn {
+            background: linear-gradient(to right, #9b59b6, #8E44AD);
+            display: block;
+            margin: 20px auto;
             width: 200px;
-            padding-left: 5px;
         }
-        
-        .search-bar input::placeholder {
-            color: var(--gray);
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
         }
-        
-        .search-icon {
-            color: var(--gray);
+        .ad-container {
+            margin: 25px 0;
+            padding: 10px;
+            background: #252525;
+            border-radius: 8px;
+            text-align: center;
         }
-        
-        .mobile-menu-btn {
+        .ad-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .trending-badge {
+            background: #e74c3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .exclusive-badge {
+            background: #9b59b6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .game-details {
             display: none;
-            background: none;
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .game-details h2 {
+            color: #6e48aa;
+            margin-top: 0;
+        }
+        .close-btn {
+            background: #e74c3c;
+            color: white;
             border: none;
-            color: var(--text);
-            font-size: 24px;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            margin-top: 15px;
         }
         
-        /* Theme and Language Toggle */
-        .theme-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 20px;
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
+        /* Social Media Bar Styles */
+        .social-bar {
+            position: fixed;
+            bottom: -60px;
             left: 0;
             right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            transition: bottom 0.5s ease;
+            z-index: 1000;
+        }
+        .social-bar.visible {
             bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
         }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--primary);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
-        .language-selector {
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 16px;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 4px;
-        }
-        
-        .language-selector:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-        
-        [data-theme="dark"] .language-selector:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), 
-                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(94, 114, 228, 0.3), transparent 70%);
-        }
-        
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
+        .social-bar a {
             color: white;
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .primary-btn {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s, color 0.3s;
             text-decoration: none;
         }
-        
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
-        }
-        
-        .secondary-btn {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--primary);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-        
-        .secondary-btn:hover {
-            background-color: rgba(94, 114, 228, 0.1);
+        .social-bar a:hover {
             transform: translateY(-3px);
         }
-        
-        /* Popular Games Section */
-        .popular-games {
-            padding: 100px 0 60px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-        
-        .section-title span {
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .game-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border);
-        }
-        
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(94, 114, 228, 0.2);
-            background-color: var(--card-hover);
-        }
-        
-        .game-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .game-info {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .game-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--text);
-        }
-        
-        .game-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            color: var(--gray);
-        }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .rating i {
-            color: #FBBC04;
-        }
-        
-        .game-description {
-            margin-bottom: 20px;
-            color: var(--gray);
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-        
-        .download-btn {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(94, 114, 228, 0.3);
-        }
-        
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: var(--gray);
-            font-size: 1.2rem;
-        }
-        
-        /* Categories Section */
-        .categories {
-            padding: 60px 0;
-            background-color: var(--card-bg);
-        }
-        
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .category-card {
-            background: linear-gradient(145deg, var(--card-bg), var(--card-hover));
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border);
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(94, 114, 228, 0.2);
-        }
-        
-        .category-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .category-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--text);
-        }
-        
-        .category-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background-color: var(--background);
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-        
-        .about-text h2 span {
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            color: var(--gray);
-        }
-        
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text);
-        }
-        
-        .feature i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-        
-        .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, rgba(94, 114, 228, 0.3), rgba(130, 94, 228, 0.3));
-            z-index: 1;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            padding: 60px 0 20px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            color: var(--light);
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
-        }
-        
-        .footer-column p {
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Ad Container Styles */
-        .ad-container {
-            width: 100%;
-            text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        [data-theme="dark"] .ad-container {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .ad-banner {
-            margin: 0 auto;
-            max-width: 100%;
-            border-radius: 8px;
-        }
-
-        /* Sticky Ad Bar */
-        .sticky-ad-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--dark);
-            z-index: 9999;
-            padding: 10px;
-            text-align: center;
-            border-top: 2px solid var(--primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .close-ad {
+        .facebook:hover { color: #3b5998; }
+        .twitter:hover { color: #1da1f2; }
+        .instagram:hover { color: #e1306c; }
+        .youtube:hover { color: #ff0000; }
+        .whatsapp:hover { color: #25d366; }
+        .close-social {
             position: absolute;
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: white;
-            cursor: pointer;
-            background: transparent;
+            background: none;
             border: none;
-            font-size: 18px;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            overscroll-behavior: none;
-        }
-
-        .modal-content {
-            background-color: var(--dark);
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-logo {
-            max-width: 150px;
-            margin-bottom: 20px;
-        }
-
-        .download-progress {
-            margin: 30px 0;
-        }
-
-        .progress-bar {
-            height: 20px;
-            background-color: var(--gray);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            width: 0;
-            transition: width 0.5s linear;
-        }
-
-        .progress-text {
-            font-size: 0.9rem;
-            color: #AAA;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-image {
-                order: -1;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links, .search-bar, .theme-toggle {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                height: 70vh;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
+        .close-social:hover {
+            color: #e74c3c;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-gamepad logo-icon"></i>
-                    <h1 class="site-title">bXgame98</h1>
-                </div>
-                <div class="nav-links">
-                    <a href="#home" class="nav-link" data-i18n="home">Home</a>
-                    <a href="#popular" class="nav-link" data-i18n="games">Games</a>
-                    <a href="#categories" class="nav-link" data-i18n="categories">Categories</a>
-                    <a href="#about" class="nav-link" data-i18n="about">About</a>
-                </div>
-                <div class="search-bar">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="searchInput" placeholder="Search games..." onkeyup="searchGames()">
-                </div>
-                <div class="theme-toggle">
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="themeToggle">
-                        <span class="slider"></span>
-                    </label>
-                    <i class="fas fa-moon"></i>
-                    <select class="language-selector" id="languageSelector">
-                        <option value="en">English</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                </div>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 data-i18n="hero-title">Download Premium <span>Games</span> For Free</h1>
-                <p data-i18n="hero-description">Access the most anticipated games across all genres. High-speed downloads, no ads, and regular updates. Join our community today!</p>
-                <div class="cta-buttons">
-                    <a href="#popular" class="primary-btn">
-                        <i class="fas fa-gamepad"></i> <span data-i18n="browse-games">Browse Games</span>
-                    </a>
-                    <a href="#categories" class="secondary-btn">
-                        <i class="fas fa-th-large"></i> <span data-i18n="categories">Categories</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Banner Ad 1 -->
+    <!-- Top Banner Ad -->
     <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
         <script type="text/javascript">
             atOptions = {
                 'key' : '3043529ca5c93c815dd6d1dd6665778c',
@@ -944,716 +197,331 @@
         <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
     </div>
 
-    <!-- Popular Games Section -->
-    <section id="popular" class="popular-games">
-        <div class="container">
-            <h2 class="section-title" data-i18n="top-games">Top <span>Games</span></h2>
-            <div class="games-grid" id="gamesContainer">
-                <!-- Game cards will be inserted here dynamically -->
-            </div>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Premium Games Hub</h1>
+            <p>Your Ultimate Gaming Portal</p>
         </div>
-    </section>
 
-    <!-- Native Banner Ad -->
-    <div class="ad-container">
-        <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-        <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-    </div>
-
-    <!-- Categories Section -->
-    <section id="categories" class="categories">
-        <div class="container">
-            <h2 class="section-title" data-i18n="game-categories">Game <span>Categories</span></h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <i class="fas fa-fist-raised category-icon"></i>
-                    <h3 data-i18n="action">Action</h3>
-                    <p data-i18n="action-desc">Fast-paced games focused on combat and challenges</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-dragon category-icon"></i>
-                    <h3 data-i18n="adventure">Adventure</h3>
-                    <p data-i18n="adventure-desc">Explore vast worlds and complete epic quests</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-football-ball category-icon"></i>
-                    <h3 data-i18n="sports">Sports</h3>
-                    <p data-i18n="sports-desc">Competitive games based on real-world sports</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-car category-icon"></i>
-                    <h3 data-i18n="racing">Racing</h3>
-                    <p data-i18n="racing-desc">High-speed racing games with various vehicles</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-chess category-icon"></i>
-                    <h3 data-i18n="strategy">Strategy</h3>
-                    <p data-i18n="strategy-desc">Plan, build, and conquer with tactical thinking</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-ghost category-icon"></i>
-                    <h3 data-i18n="horror">Horror</h3>
-                    <p data-i18n="horror-desc">Terrifying experiences that will test your courage</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-users category-icon"></i>
-                    <h3 data-i18n="multiplayer">Multiplayer</h3>
-                    <p data-i18n="multiplayer-desc">Play with friends or compete against others online</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-puzzle-piece category-icon"></i>
-                    <h3 data-i18n="puzzle">Puzzle</h3>
-                    <p data-i18n="puzzle-desc">Challenge your mind with brain teasers and puzzles</p>
-                </div>
+        <!-- GTA 5 Mobile -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="GTA 5 Mobile" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
+                <div>Open World | 3.2GB | 4.9★ Rating</div>
+                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
+            <button class="action-btn" data-game="gta5">VIEW DETAILS</button>
         </div>
-    </section>
 
-    <!-- Banner Ad 2 -->
-    <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 data-i18n="why-choose">Why Choose <span>bXgame98</span>?</h2>
-                    <p data-i18n="about-text1">bXgame98 is the premier destination for gamers looking for premium game downloads. Our platform offers access to the most anticipated games across all genres.</p>
-                    <p data-i18n="about-text2">We pride ourselves on providing a seamless downloading experience with no hidden fees and regular updates to ensure you always have access to the latest games.</p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="feature1">Early Access to New Games</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="feature2">High-Speed Servers</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="feature3">24/7 Customer Support</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span data-i18n="feature4">Exclusive Previews</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Gaming Setup">
-                </div>
-            </div>
+        <!-- Game Details for GTA 5 -->
+        <div class="game-details" id="gta5-details">
+            <h2>GTA 5 Mobile - Complete Edition</h2>
+            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices. This version includes all story mode missions, online multiplayer, and exclusive mobile features.</p>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Full HD graphics optimized for mobile</li>
+                <li>All story missions from original game</li>
+                <li>Exclusive mobile-only vehicles and weapons</li>
+                <li>Customizable controls for touchscreen</li>
+                <li>Regular updates with new content</li>
+            </ul>
+            <p>GTA 5 Mobile brings the complete Los Santos experience to your smartphone with enhanced visuals and performance. The game has been downloaded over 50 million times worldwide and maintains a 4.9/5 rating from players.</p>
+            <button class="close-btn">Close</button>
         </div>
-    </section>
 
-    <!-- Sticky Social Ad Bar -->
-    <div class="sticky-ad-bar" id="stickyAdBar">
-        <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
-        <button class="close-ad" onclick="closeStickyAd()">×</button>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="logo">
-                        <i class="fas fa-gamepad logo-icon"></i>
-                        <h1>bXgame98</h1>
-                    </div>
-                    <p data-i18n="footer-desc">Your premier destination for premium game downloads. Get access to the hottest titles.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="quick-links">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> <span data-i18n="home">Home</span></a></li>
-                        <li><a href="#popular"><i class="fas fa-chevron-right"></i> <span data-i18n="games">Games</span></a></li>
-                        <li><a href="#categories"><i class="fas fa-chevron-right"></i> <span data-i18n="categories">Categories</span></a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> <span data-i18n="about">About Us</span></a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="categories">Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="action">Action</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="adventure">Adventure</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="racing">Racing</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="sports">Sports</span></a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 data-i18n="support">Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="faq">FAQ</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="contact">Contact Us</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="privacy">Privacy Policy</span></a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="terms">Terms of Service</span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 bXgame98. <span data-i18n="rights">All Rights Reserved</span>.</p>
-            </div>
+        <!-- Native Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Recommended</div>
+            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
-    </footer>
 
-    <!-- Download Modal -->
-    <div class="modal" id="downloadModal">
-        <div class="modal-content">
-            <img src="" alt="Game Logo" class="modal-logo" id="modalGameLogo">
-            <h2 id="modalTitle">DOWNLOADING GAME</h2>
-            <div class="download-progress">
-                <div class="progress-bar">
-                    <div class="progress" id="progressBar"></div>
-                </div>
-                <div class="progress-text" id="progressText">Preparing download... 0%</div>
+        <!-- Call of Duty Mobile -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="Call of Duty Mobile" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
+                <div>FPS | 2.4GB | 4.8★ Rating</div>
+                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
             </div>
+            <button class="action-btn" data-game="cod">VIEW DETAILS</button>
+        </div>
+
+        <!-- Game Details for Call of Duty -->
+        <div class="game-details" id="cod-details">
+            <h2>Call of Duty Mobile - Season 6 Update</h2>
+            <p>The latest update brings new maps, weapons, and the return of fan-favorite game modes to the best FPS experience on mobile.</p>
+            <h3>What's New:</h3>
+            <ul>
+                <li>New Battle Pass with 50 tiers of rewards</li>
+                <li>2 new multiplayer maps</li>
+                <li>3 new functional weapons</li>
+                <li>Zombie mode improvements</li>
+                <li>Performance optimizations</li>
+            </ul>
+            <p>With over 300 million downloads worldwide, Call of Duty Mobile continues to set the standard for mobile shooters. The current season introduces the most requested features from the community.</p>
+            <button class="close-btn">Close</button>
+        </div>
+
+        <!-- Asphalt 9: Legends -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="Asphalt 9: Legends" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
+                <div>Racing | 2.1GB | 4.7★ Rating</div>
+                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
+            </div>
+            <button class="action-btn" data-game="asphalt9">VIEW DETAILS</button>
+        </div>
+
+        <!-- Game Details for Asphalt 9 -->
+        <div class="game-details" id="asphalt9-details">
+            <h2>Asphalt 9: Legends - Ultimate Edition</h2>
+            <p>The most visually stunning racing game on mobile now with all cars and tracks unlocked in this exclusive edition.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>Over 150 hypercars from top manufacturers</li>
+                <li>70+ tracks in stunning locations worldwide</li>
+                <li>All DLC content included</li>
+                <li>Customizable controls and HUD</li>
+                <li>Regular events with exclusive rewards</li>
+            </ul>
+            <p>Asphalt 9: Legends redefines mobile racing with console-quality graphics and physics. This exclusive version gives you access to all content without restrictions, valued at over $200 in the standard version.</p>
+            <button class="close-btn">Close</button>
+        </div>
+
+        <!-- More Games Button -->
+        <div class="btn-container">
+            <button class="more-btn">SHOW MORE GAMES</button>
         </div>
     </div>
 
+    <!-- Social Media Bar -->
+    <div class="social-bar" id="socialBar">
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <button class="close-social" id="closeSocial">&times;</button>
+    </div>
+
+    <!-- Popunder System -->
     <script>
-        // Game data for most anticipated games
-        const games = [
-            {
-                title: "GTA 5 MOBILE",
-                image: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
-                rating: 4.9,
-                size: "150 GB",
-                description: "The highly anticipated mobile version of GTA 5, featuring an expansive open world set in Los Santos with unprecedented realism.",
-                gameUrl: "#"
-            },
-            {
-                title: "Fortnite Mobile",
-                image: "https://m.media-amazon.com/images/I/91gz6Qc9N-L.png",
-                rating: 4.8,
-                size: "8 GB",
-                description: "The mobile version of the popular battle royale game with cross-platform play and regular content updates.",
-                gameUrl: "#"
-            },
-            {
-                title: "MINECRAFT",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_cNyeahid6rCSc4ZtK85aE-6sMV8udunl6w&s",
-                rating: 4.9,
-                size: "2 GB",
-                description: "The classic sandbox game now optimized for mobile with all the features of the desktop version.",
-                gameUrl: "#"
-            },
-            {
-                title: "POPPY PLAYTIME",
-                image: "https://cdn1.epicgames.com/spt-assets/465c0f6c95d04b1c86b280b4925fee2d/poppy-playtime-yaypc.jpg",
-                rating: 4.5,
-                size: "5 GB",
-                description: "The terrifying horror adventure game now available on mobile with all its creepy characters.",
-                gameUrl: "#"
-            },
-            {
-                title: "call of mini zombies",
-                image: "https://m.media-amazon.com/images/I/81DDLlyPW3L.png",
-                rating: 4.3,
-                size: "1.5 GB",
-                description: "The popular zombie shooter game optimized for mobile devices with intuitive controls.",
-                gameUrl: "#"
-            },
-            {
-                title: "infinity blade",
-                image: "https://preview.redd.it/i-miss-infinity-blade-v0-hkd04qkw4k9a1.jpg?width=640&crop=smart&auto=webp&s=19ed62123b37fa3bdefcb0eeec41db5c8e96631b",
-                rating: 4.7,
-                size: "3 GB",
-                description: "The legendary mobile RPG returns with enhanced graphics and new content.",
-                gameUrl: "#"
-            },
-            {
-                title: "schudele 1",
-                image: "https://i.blogs.es/abdf92/shds/500_333.jpeg",
-                rating: 4.2,
-                size: "2.5 GB",
-                description: "A unique mobile experience that combines planning with gaming elements.",
-                gameUrl: "#"
-            },
-            {
-                title: "Repo",
-                image: "https://assets-prd.ignimgs.com/2025/02/27/repo-button-1740672104138.jpg",
-                rating: 4.6,
-                size: "4 GB",
-                description: "The intense looter game now available on mobile with all its fast-paced action.",
-                gameUrl: "#"
-            },
-            {
-                title: "invincible mobile",
-                image: "https://media.pocketgamer.biz/images/125688/83470/invincible-2_l1200.jpg",
-                rating: 4.4,
-                size: "3.5 GB",
-                description: "The superhero action game based on the popular series, optimized for mobile play.",
-                gameUrl: "#"
-            },
-            {
-                title: "kingshot mobile",
-                image: "https://play-lh.googleusercontent.com/LByrur1mTmPeNr0ljI-uAUcct1rzmTve5Esau1SwoAzjBXQUby6uHIfHbF9TAT51mgHm",
-                rating: 4.3,
-                size: "2 GB",
-                description: "A strategic battle game with stunning graphics and deep gameplay mechanics.",
-                gameUrl: "#"
-            },
-            {
-                title: "Baseball",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaqm57-NOiEckY7MuJ0a88ilEDainHJYODXw&s",
-                rating: 4.1,
-                size: "1.8 GB",
-                description: "The most realistic baseball simulation game now available on mobile devices.",
-                gameUrl: "#"
-            },
-            {
-                title: "forinlove mobile",
-                image: "https://image.winudf.com/v2/image1/c3R1ZGlvLmdlbml1cy5vZmZpY2VnaXJsX2ljb25fMTU4NzY5NDg3Nl8wOTA/icon.png?w=156&fakeurl=1",
-                rating: 4.0,
-                size: "1.2 GB",
-                description: "A romantic adventure game with deep storytelling and beautiful visuals.",
-                gameUrl: "#"
-            },
-            {
-                title: "pokemon champions",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfWbXtNv84VWE5RZI2o4uUtOZHMvzoqbD8oQ&s",
-                rating: 4.7,
-                size: "3 GB",
-                description: "The next generation of Pokémon games with enhanced graphics and new features.",
-                gameUrl: "#"
-            },
-            {
-                title: "monster hunter outlanders",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi8VWc5Sg020Ma9KNxK-RlF84ZDLbRQe9Li-ZSSNNhcP56X0qlBzocnRglTjZFXmPTzAU&usqp=CAU",
-                rating: 4.6,
-                size: "4 GB",
-                description: "The popular hunting game series now available on mobile with all its depth.",
-                gameUrl: "#"
-            },
-            {
-                title: "suikoden mobile",
-                image: "https://www.konami.com/games/suikoden/star_leap/s/images/mainv_sp.jpg",
-                rating: 4.5,
-                size: "3.5 GB",
-                description: "The classic RPG series returns with a mobile version featuring enhanced graphics.",
-                gameUrl: "#"
-            },
-            {
-                title: "plants vs zombies",
-                image: "https://m.media-amazon.com/images/I/61Aethog1iL.png",
-                rating: 4.8,
-                size: "1.5 GB",
-                description: "The beloved tower defense game with all its charm and new mobile-exclusive content.",
-                gameUrl: "#"
-            },
-            {
-                title: "sunderfolk",
-                image: "https://assets.nintendo.com/image/fetch/q_auto/f_auto/https://atum-img-lp1.cdn.nintendo.net/i/c/c080890b686441119741b6a460afa374_1024",
-                rating: 4.4,
-                size: "2.8 GB",
-                description: "A unique adventure game with deep storytelling and beautiful visuals.",
-                gameUrl: "#"
-            },
-            {
-                title: "clair obscur expedition",
-                image: "https://upload.wikimedia.org/wikipedia/en/5/5a/Clair_Obscur%2C_Expedition_33_Cover_1.webp",
-                rating: 4.6,
-                size: "3.2 GB",
-                description: "A mysterious adventure game with deep exploration and puzzle elements.",
-                gameUrl: "#"
-            },
-            {
-                title: "dune game",
-                image: "https://m.media-amazon.com/images/I/71t0Pjjkv4L._AC_UF1000,1000_QL80_.jpg",
-                rating: 4.5,
-                size: "4.5 GB",
-                description: "The epic sci-fi adventure based on the Dune universe, now on mobile.",
-                gameUrl: "#"
-            },
-            {
-                title: "royal kingdom",
-                image: "https://play-lh.googleusercontent.com/nAAF2bxrD2BeoM1IkUZ6qeRG_QGG_Rekrrh4VYQSMDeRa7FR8sWMWaHClID547XJ3D4",
-                rating: 4.3,
-                size: "2.5 GB",
-                description: "A strategy game where you build your kingdom and conquer others.",
-                gameUrl: "#"
-            },
-            {
-                title: "elder scrolls phone game",
-                image: "https://store-images.s-microsoft.com/image/apps.28824.14581520643411044.34637721-ec29-414e-8a4a-644b1a39e03f.6bc50166-a56f-4e16-adfe-6abf6dc2e926?q=90&w=177&h=177",
-                rating: 4.7,
-                size: "5 GB",
-                description: "The Elder Scrolls universe comes to mobile with this epic adventure game.",
-                gameUrl: "#"
-            },
-            {
-                title: "FORZA HORIZON 5",
-                image: "https://assets-prd.ignimgs.com/2021/08/24/forza-horizon-5-button-fin-1629830068379.jpg?width=300&crop=1%3A1%2Csmart&auto=webp",
-                rating: 4.9,
-                size: "6 GB",
-                description: "The ultimate racing experience now available on mobile devices.",
-                gameUrl: "#"
-            },
-            {
-                title: "CLASH OF CLANS",
-                image: "https://play-lh.googleusercontent.com/LByrur1mTmPeNr0ljI-uAUcct1rzmTve5Esau1SwoAzjBXQUby6uHIfHbF9TAT51mgHm",
-                rating: 4.8,
-                size: "0.5 GB",
-                description: "The popular strategy game with regular updates and new content.",
-                gameUrl: "#"
-            },
-            {
-                title: "BRAWL STARS",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hmw7c26HqX7idWyU0PPvTUlQ6BZiXMejoA&s",
-                rating: 4.7,
-                size: "1 GB",
-                description: "Fast-paced multiplayer battles with unique characters and abilities.",
-                gameUrl: "#"
-            },
-            {
-                title: "SUBWAY SURFERS",
-                image: "https://play-lh.googleusercontent.com/vwddCx5I_iXVvnQdqLumCc_-65Orxep_iyTh5h4mdT-x0QWpXnQxGUTEbWLlHvpFoBQ",
-                rating: 4.6,
-                size: "0.8 GB",
-                description: "The endless runner game with regular updates and new locations.",
-                gameUrl: "#"
-            },
-            {
-                title: "CANDY CRUSH SAGA",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdeYbV0mhaoTzYzMOfc6pEUQKZUNjX4al2Kg&s",
-                rating: 4.5,
-                size: "0.3 GB",
-                description: "The classic match-3 puzzle game with hundreds of levels.",
-                gameUrl: "#"
-            }
-        ];
-
-        // Translation dictionary
-        const translations = {
-            en: {
-                "home": "Home",
-                "games": "Games",
-                "categories": "Categories",
-                "about": "About",
-                "hero-title": "Download Premium <span>Games</span> For Free",
-                "hero-description": "Access the most anticipated games across all genres. High-speed downloads, no ads, and regular updates. Join our community today!",
-                "browse-games": "Browse Games",
-                "top-games": "Top <span>Games</span>",
-                "game-categories": "Game <span>Categories</span>",
-                "action": "Action",
-                "action-desc": "Fast-paced games focused on combat and challenges",
-                "adventure": "Adventure",
-                "adventure-desc": "Explore vast worlds and complete epic quests",
-                "sports": "Sports",
-                "sports-desc": "Competitive games based on real-world sports",
-                "racing": "Racing",
-                "racing-desc": "High-speed racing games with various vehicles",
-                "strategy": "Strategy",
-                "strategy-desc": "Plan, build, and conquer with tactical thinking",
-                "horror": "Horror",
-                "horror-desc": "Terrifying experiences that will test your courage",
-                "multiplayer": "Multiplayer",
-                "multiplayer-desc": "Play with friends or compete against others online",
-                "puzzle": "Puzzle",
-                "puzzle-desc": "Challenge your mind with brain teasers and puzzles",
-                "why-choose": "Why Choose <span>bXgame98</span>?",
-                "about-text1": "bXgame98 is the premier destination for gamers looking for premium game downloads. Our platform offers access to the most anticipated games across all genres.",
-                "about-text2": "We pride ourselves on providing a seamless downloading experience with no hidden fees and regular updates to ensure you always have access to the latest games.",
-                "feature1": "Early Access to New Games",
-                "feature2": "High-Speed Servers",
-                "feature3": "24/7 Customer Support",
-                "feature4": "Exclusive Previews",
-                "quick-links": "Quick Links",
-                "support": "Support",
-                "faq": "FAQ",
-                "contact": "Contact Us",
-                "privacy": "Privacy Policy",
-                "terms": "Terms of Service",
-                "footer-desc": "Your premier destination for premium game downloads. Get access to the hottest titles.",
-                "rights": "All Rights Reserved"
-            },
-            ar: {
-                "home": "الرئيسية",
-                "games": "الألعاب",
-                "categories": "الفئات",
-                "about": "من نحن",
-                "hero-title": "حمل ألعاب <span>بريميوم</span> مجاناً",
-                "hero-description": "احصل على أحدث الألعاب بجميع الأنواع. تحميل سريع، بدون إعلانات، وتحديثات مستمرة. انضم لمجتمعنا اليوم!",
-                "browse-games": "تصفح الألعاب",
-                "top-games": "أفضل <span>الألعاب</span>",
-                "game-categories": "فئات <span>الألعاب</span>",
-                "action": "أكشن",
-                "action-desc": "ألعاب سريعة الإيقاع تركز على القتال والتحديات",
-                "adventure": "مغامرات",
-                "adventure-desc": "استكشف عوالم واسعة وأكمل المهام الملحمية",
-                "sports": "رياضة",
-                "sports-desc": "ألعاب تنافسية تعتمد على الرياضة الحقيقية",
-                "racing": "سباقات",
-                "racing-desc": "ألعاب سباق سريعة بمختلف أنواع المركبات",
-                "strategy": "إستراتيجية",
-                "strategy-desc": "خطط، ابنِ، واحتكم بالتفكير التكتيكي",
-                "horror": "رعب",
-                "horror-desc": "تجارب مرعبة ستختبر شجاعتك",
-                "multiplayer": "متعددة اللاعبين",
-                "multiplayer-desc": "العب مع الأصدقاء أو تنافس مع الآخرين عبر الإنترنت",
-                "puzzle": "ألغاز",
-                "puzzle-desc": "تحدى عقلك مع الألغاز والأحاجي",
-                "why-choose": "لماذا تختار <span>bXgame98</span>؟",
-                "about-text1": "bXgame98 هو الوجهة الأولى للاعبين الباحثين عن ألعاب بريميوم. نقدم وصولاً لأكثر الألعاب انتظاراً بجميع الأنواع.",
-                "about-text2": "نحن نفتخر بتقديم تجربة تحميل سلسة بدون رسوم خفية وتحديثات مستمرة لضمان وصولك لأحدث الألعاب.",
-                "feature1": "وصول مبكر للألعاب الجديدة",
-                "feature2": "خوادم عالية السرعة",
-                "feature3": "دعم فني 24/7",
-                "feature4": "عروض حصرية",
-                "quick-links": "روابط سريعة",
-                "support": "الدعم",
-                "faq": "الأسئلة الشائعة",
-                "contact": "اتصل بنا",
-                "privacy": "سياسة الخصوصية",
-                "terms": "شروط الخدمة",
-                "footer-desc": "وجهتك الأولى لتحميل ألعاب بريميوم. احصل على الوصول لأكثر الألعاب شهرة.",
-                "rights": "جميع الحقوق محفوظة"
+        // Popunder configuration
+        const popunderConfig = {
+            scriptUrl: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
+            behavior: {
+                onLoad: {
+                    enabled: true,
+                    delay: 5000,       // 5 seconds after page load
+                    count: 1
+                },
+                onClick: {
+                    enabled: true,
+                    delay: 1000,       // 1 second after click
+                    count: 1,
+                    cooldown: 30000    // 30 seconds between triggers
+                }
             }
         };
 
-        // Initialize games when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            displayGames(games);
-            
-            // Set up animations for elements
-            const elements = document.querySelectorAll('.game-card, .about-text, .about-image');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.5s, transform 0.5s';
-            });
-            
-            // Trigger animation after page load
-            setTimeout(animateOnScroll, 500);
-            
-            // Add scroll event listener for animations
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('themeToggle');
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeToggle.checked = savedTheme === 'dark';
-            
-            themeToggle.addEventListener('change', function() {
-                const theme = this.checked ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-            });
-            
-            // Language selector functionality
-            const languageSelector = document.getElementById('languageSelector');
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            languageSelector.value = savedLanguage;
-            changeLanguage(savedLanguage);
-            
-            languageSelector.addEventListener('change', function() {
-                const lang = this.value;
-                changeLanguage(lang);
-                localStorage.setItem('language', lang);
-                
-                // Change direction for RTL languages
-                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-                document.documentElement.lang = lang;
-            });
-        });
+        // State management
+        let popunderState = {
+            lastTrigger: 0,
+            scriptLoaded: false,
+            isTriggering: false
+        };
 
-        // Change language function
-        function changeLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.innerHTML = translations[lang][key];
-                    }
-                }
-            });
-        }
-
-        // Display games function
-        function displayGames(gamesToDisplay) {
-            const gamesContainer = document.getElementById('gamesContainer');
-            gamesContainer.innerHTML = '';
-            
-            if (gamesToDisplay.length === 0) {
-                const noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.setAttribute('data-i18n', 'no-results');
-                noResults.textContent = 'No games found matching your search. Try different keywords.';
-                gamesContainer.appendChild(noResults);
+        // Load the popunder script
+        function loadPopunderScript(callback) {
+            if (popunderState.scriptLoaded) {
+                if (callback) callback();
                 return;
             }
             
-            gamesToDisplay.forEach(game => {
-                const stars = getStarRating(game.rating);
-                
-                const gameCard = document.createElement('div');
-                gameCard.className = 'game-card';
-                gameCard.innerHTML = `
-                    <img src="${game.image}" alt="${game.title}">
-                    <div class="game-info">
-                        <h3>${game.title}</h3>
-                        <div class="game-meta">
-                            <div class="rating">
-                                ${stars}
-                                <span>${game.rating}</span>
-                            </div>
-                            <div class="size">${game.size}</div>
-                        </div>
-                        <div class="game-description">
-                            ${game.description}
-                        </div>
-                        <button class="download-btn" onclick="startDownload('${game.title}', '${game.image}', '${game.gameUrl}')">
-                            <i class="fas fa-download"></i> <span data-i18n="download-now">Download Now</span>
-                        </button>
-                    </div>
-                `;
-                gamesContainer.appendChild(gameCard);
-            });
+            const script = document.createElement('script');
+            script.src = popunderConfig.scriptUrl;
+            script.async = true;
             
-            // Trigger animations for newly added elements
-            setTimeout(animateOnScroll, 100);
+            script.onload = function() {
+                popunderState.scriptLoaded = true;
+                if (callback) callback();
+            };
+            
+            script.onerror = function() {
+                console.error('Popunder script failed to load');
+            };
+            
+            document.body.appendChild(script);
         }
 
-        // Generate star rating HTML
-        function getStarRating(rating) {
-            let stars = '';
-            const fullStars = Math.floor(rating);
-            const halfStar = rating % 1 >= 0.5;
+        // Trigger popunder safely
+        function triggerPopunder(count = 1, delayBetween = 500) {
+            const now = Date.now();
             
-            for (let i = 0; i < fullStars; i++) {
-                stars += '<i class="fas fa-star"></i>';
-            }
-            
-            if (halfStar) {
-                stars += '<i class="fas fa-star-half-alt"></i>';
-            }
-            
-            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-            for (let i = 0; i < emptyStars; i++) {
-                stars += '<i class="far fa-star"></i>';
-            }
-            
-            return stars;
-        }
-
-        // Search games function
-        function searchGames() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (searchTerm.trim() === '') {
-                displayGames(games);
+            // Prevent too frequent triggers
+            if (popunderState.isTriggering || 
+                now - popunderState.lastTrigger < popunderConfig.behavior.onClick.cooldown) {
                 return;
             }
             
-            const filteredGames = games.filter(game => 
-                game.title.toLowerCase().includes(searchTerm) || 
-                game.description.toLowerCase().includes(searchTerm)
-            );
+            popunderState.isTriggering = true;
+            popunderState.lastTrigger = now;
             
-            displayGames(filteredGames);
-        }
-
-        // Animate elements on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.game-card, .about-text, .about-image, .category-card');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100 && elementBottom > 0) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-
-        // Download functionality
-        let currentGameUrl = '';
-        
-        function startDownload(gameName, gameLogo, gameUrl) {
-            // Store the game URL for later use
-            currentGameUrl = gameUrl;
-            
-            // Show the download modal
-            const downloadModal = document.getElementById('downloadModal');
-            const modalGameLogo = document.getElementById('modalGameLogo');
-            const modalTitle = document.getElementById('modalTitle');
-            
-            modalTitle.textContent = `DOWNLOADING ${gameName}`;
-            modalGameLogo.src = gameLogo;
-            downloadModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            
-            // Start download progress
-            simulateDownload();
-        }
-
-        function simulateDownload() {
-            let progress = 0;
-            const totalTime = 3000; // 3 seconds
-            
-            const interval = setInterval(() => {
-                if (progress < 100) {
-                    progress += 1;
-                    document.getElementById('progressBar').style.width = progress + '%';
-                    document.getElementById('progressText').textContent = `Downloading... ${progress}%`;
-                } else {
-                    clearInterval(interval);
-                    document.getElementById('progressText').textContent = "Download complete!";
-                    
-                    // Close modal after 1 second
+            loadPopunderScript(function() {
+                for (let i = 0; i < count; i++) {
                     setTimeout(function() {
-                        document.getElementById('downloadModal').style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                        resetDownloadModal();
-                        
-                        // Open game URL
-                        window.open(currentGameUrl, '_blank');
-                    }, 1000);
+                        try {
+                            if (typeof window.popunder === 'function') {
+                                window.popunder();
+                            } else {
+                                // Fallback method
+                                const win = window.open('about:blank', '_blank');
+                                if (win) {
+                                    win.blur();
+                                    window.focus();
+                                    setTimeout(() => win.close(), 100);
+                                }
+                            }
+                        } catch (e) {
+                            console.error('Popunder error:', e);
+                        }
+                    }, i * delayBetween);
                 }
-            }, totalTime / 100);
+                
+                // Reset triggering state
+                setTimeout(() => {
+                    popunderState.isTriggering = false;
+                }, count * delayBetween + 1000);
+            });
         }
 
-        function resetDownloadModal() {
-            document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = 'Preparing download... 0%';
-            currentGameUrl = '';
+        // Show game details
+        function showGameDetails(gameId) {
+            // Hide all details first
+            document.querySelectorAll('.game-details').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show selected game details
+            const detailsEl = document.getElementById(`${gameId}-details`);
+            if (detailsEl) {
+                el.style.display = 'block';
+                detailsEl.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Trigger popunder when showing details
+            triggerPopunder(1, 500);
         }
 
-        // Close sticky ad function
-        function closeStickyAd() {
-            document.getElementById('stickyAdBar').style.display = 'none';
-            localStorage.setItem('adClosed', 'true');
+        // Close game details
+        function closeGameDetails() {
+            document.querySelectorAll('.game-details').forEach(el => {
+                el.style.display = 'none';
+            });
         }
-        
-        // Don't show ad if user previously closed it
-        if(localStorage.getItem('adClosed') === 'true') {
-            document.getElementById('stickyAdBar').style.display = 'none';
+
+        // Initialize the popunder system
+        function initPopunderSystem() {
+            // On Load Trigger
+            if (popunderConfig.behavior.onLoad.enabled) {
+                setTimeout(() => {
+                    triggerPopunder(
+                        popunderConfig.behavior.onLoad.count,
+                        500
+                    );
+                }, popunderConfig.behavior.onLoad.delay);
+            }
+            
+            // Click Trigger for general clicks
+            if (popunderConfig.behavior.onClick.enabled) {
+                document.addEventListener('click', function(e) {
+                    // Skip if clicked on buttons (handled separately)
+                    if (e.target.closest('button')) return;
+                    
+                    setTimeout(() => {
+                        triggerPopunder(
+                            popunderConfig.behavior.onClick.count,
+                            popunderConfig.behavior.onClick.delay
+                        );
+                    }, 200);
+                });
+            }
+            
+            // Game details buttons
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const gameId = this.getAttribute('data-game');
+                    showGameDetails(gameId);
+                });
+            });
+            
+            // Close buttons
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', closeGameDetails);
+            });
+            
+            // More Games Button
+            document.querySelector('.more-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                const button = this;
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = 'LOADING...';
+                button.disabled = true;
+                
+                triggerPopunder(1, 500);
+                
+                setTimeout(() => {
+                    alert('More games loaded!');
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 1500);
+            });
         }
+
+        // Show social media bar after 4 seconds
+        function showSocialBar() {
+            setTimeout(() => {
+                const socialBar = document.getElementById('socialBar');
+                if (socialBar) {
+                    socialBar.classList.add('visible');
+                }
+            }, 4000);
+        }
+
+        // Close social media bar
+        function setupSocialBarClose() {
+            const closeBtn = document.getElementById('closeSocial');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    const socialBar = document.getElementById('socialBar');
+                    if (socialBar) {
+                        socialBar.classList.remove('visible');
+                    }
+                });
+            }
+        }
+
+        // Start all systems when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initPopunderSystem();
+            showSocialBar();
+            setupSocialBarClose();
+        });
     </script>
+    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
 </body>
 </html>
