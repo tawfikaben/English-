@@ -132,33 +132,36 @@
             margin-top: 15px;
         }
         
-        /* Social Media Bar Styles */
+        /* Social Media Bar Styles - تم التعديل هنا */
         .social-bar {
             position: fixed;
-            bottom: -60px;
+            bottom: -100px;
             left: 0;
             right: 0;
-            background: rgba(30, 30, 30, 0.95);
-            padding: 10px 0;
+            background: rgba(110, 72, 170, 0.95);
+            padding: 15px 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
-            transition: bottom 0.5s ease;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            transition: bottom 0.5s ease, transform 0.5s ease;
+            transform: translateY(100%);
             z-index: 1000;
         }
         .social-bar.visible {
             bottom: 0;
+            transform: translateY(0);
         }
         .social-bar a {
             color: white;
-            font-size: 24px;
-            margin: 0 15px;
-            transition: transform 0.3s, color 0.3s;
+            font-size: 28px;
+            margin: 0 20px;
+            transition: all 0.3s;
             text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .social-bar a:hover {
-            transform: translateY(-3px);
+            transform: scale(1.2) translateY(-5px);
         }
         .facebook:hover { color: #3b5998; }
         .twitter:hover { color: #1da1f2; }
@@ -170,14 +173,31 @@
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
+            background: rgba(255,255,255,0.1);
             border: none;
-            color: #888;
+            color: white;
             font-size: 20px;
             cursor: pointer;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
         }
         .close-social:hover {
+            background: rgba(255,255,255,0.2);
             color: #e74c3c;
+        }
+        .social-message {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -306,8 +326,9 @@
         </div>
     </div>
 
-    <!-- Social Media Bar -->
+    <!-- Social Media Bar - تم التعديل هنا -->
     <div class="social-bar" id="socialBar">
+        <div class="social-message">تابعنا للحصول على أحدث الألعاب!</div>
         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
@@ -316,7 +337,6 @@
         <button class="close-social" id="closeSocial">&times;</button>
     </div>
 
-    <!-- Popunder System -->
     <script>
         // Popunder configuration
         const popunderConfig = {
@@ -324,14 +344,14 @@
             behavior: {
                 onLoad: {
                     enabled: true,
-                    delay: 5000,       // 5 seconds after page load
+                    delay: 5000,
                     count: 1
                 },
                 onClick: {
                     enabled: true,
-                    delay: 1000,       // 1 second after click
+                    delay: 1000,
                     count: 1,
-                    cooldown: 30000    // 30 seconds between triggers
+                    cooldown: 30000
                 }
             }
         };
@@ -370,7 +390,6 @@
         function triggerPopunder(count = 1, delayBetween = 500) {
             const now = Date.now();
             
-            // Prevent too frequent triggers
             if (popunderState.isTriggering || 
                 now - popunderState.lastTrigger < popunderConfig.behavior.onClick.cooldown) {
                 return;
@@ -386,7 +405,6 @@
                             if (typeof window.popunder === 'function') {
                                 window.popunder();
                             } else {
-                                // Fallback method
                                 const win = window.open('about:blank', '_blank');
                                 if (win) {
                                     win.blur();
@@ -400,7 +418,6 @@
                     }, i * delayBetween);
                 }
                 
-                // Reset triggering state
                 setTimeout(() => {
                     popunderState.isTriggering = false;
                 }, count * delayBetween + 1000);
@@ -409,19 +426,16 @@
 
         // Show game details
         function showGameDetails(gameId) {
-            // Hide all details first
             document.querySelectorAll('.game-details').forEach(el => {
                 el.style.display = 'none';
             });
             
-            // Show selected game details
             const detailsEl = document.getElementById(`${gameId}-details`);
             if (detailsEl) {
-                el.style.display = 'block';
+                detailsEl.style.display = 'block';
                 detailsEl.scrollIntoView({ behavior: 'smooth' });
             }
             
-            // Trigger popunder when showing details
             triggerPopunder(1, 500);
         }
 
@@ -447,7 +461,6 @@
             // Click Trigger for general clicks
             if (popunderConfig.behavior.onClick.enabled) {
                 document.addEventListener('click', function(e) {
-                    // Skip if clicked on buttons (handled separately)
                     if (e.target.closest('button')) return;
                     
                     setTimeout(() => {
@@ -491,14 +504,32 @@
             });
         }
 
-        // Show social media bar after 4 seconds
+        // Show social media bar after 0.5 seconds
         function showSocialBar() {
             setTimeout(() => {
                 const socialBar = document.getElementById('socialBar');
                 if (socialBar) {
                     socialBar.classList.add('visible');
                 }
-            }, 4000);
+            }, 500);
+        }
+
+        // Show social bar on scroll up
+        function setupScrollBehavior() {
+            let lastScrollPosition = 0;
+            window.addEventListener('scroll', function() {
+                const currentScrollPosition = window.pageYOffset;
+                const socialBar = document.getElementById('socialBar');
+                
+                if (currentScrollPosition < lastScrollPosition) {
+                    // Scrolling up
+                    if (socialBar) {
+                        socialBar.classList.add('visible');
+                    }
+                }
+                
+                lastScrollPosition = currentScrollPosition;
+            });
         }
 
         // Close social media bar
@@ -518,6 +549,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initPopunderSystem();
             showSocialBar();
+            setupScrollBehavior();
             setupSocialBarClose();
         });
     </script>
