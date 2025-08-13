@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Gaming Hub - Win Exclusive Games!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .prize-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .prize-card {
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .prize-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .cta-button {
+            display: block;
+            width: 200px;
+            background-color: #4285f4;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .email-form {
+            display: none;
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .email-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .email-form button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        /* Social Bar Styles */
+        .social-bar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px 0 0 5px;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.1s ease-in;
+        }
+        .social-bar a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .social-bar a:hover {
+            padding-left: 15px;
+        }
+        .social-bar a.facebook { background: #3b5998; }
+        .social-bar a.twitter { background: #1da1f2; }
+        .social-bar a.instagram { background: #e1306c; }
+        .social-bar a.youtube { background: #ff0000; }
+        @media (max-width: 768px) {
+            .prize-card {
+                width: 100%;
+            }
+            .social-bar {
+                display: flex;
+                position: static;
+                transform: none;
+                margin: 20px 0;
+                border-radius: 5px;
+                opacity: 1;
+            }
+            .social-bar a {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Social Bar -->
+    <div class="social-bar" style="display: block;">
+        <a href="#" class="facebook">Facebook</a>
+        <a href="#" class="twitter">Twitter</a>
+        <a href="#" class="instagram">Instagram</a>
+        <a href="#" class="youtube">YouTube</a>
+    </div>
+
+    <header>
+        <h1>Welcome to Premium Gaming Hub!</h1>
+        <p>Your gateway to exclusive games and amazing prizes</p>
+    </header>
+    
+    <div class="content">
+        <h2>Discover Exciting Games</h2>
+        <p>Thank you for visiting our premium gaming portal. We're excited to offer you access to exclusive games and the chance to win fantastic prizes just for being our valued visitor.</p>
+        
+        <h3>Current Game Giveaways:</h3>
+        <div class="prize-container">
+            <div class="prize-card">
+                <h4>Grand Prize</h4>
+                <p>Call of Duty: Modern Warfare III</p>
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202308/1020/d9ea5a9c6d754d01b009f6b9b557d0e8a2f9c4a0a8a0a9a.png" alt="Call of Duty: Modern Warfare III">
+            </div>
+            <div class="prize-card">
+                <h4>Second Prize</h4>
+                <p>EA Sports FC 24</p>
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202307/1212/1d2f05631d5a7b5fa3b3a9a8a9a8a9a.png" alt="EA Sports FC 24">
+            </div>
+            <div class="prize-card">
+                <h4>Weekly Prize</h4>
+                <p>Steam Wallet $50</p>
+                <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/593110/9d8968da5b9e9b9e9b9e9b9e9b9e9b9e9b9e9b9e.png" alt="Steam Wallet">
+            </div>
+        </div>
+        
+        <p>To qualify for our game giveaways, simply explore our content and wait for the eligibility check to complete. Winners are selected randomly from all eligible visitors.</p>
+        
+        <button id="continueButton" class="cta-button">Continue to Content</button>
+        
+        <div id="emailForm" class="email-form">
+            <h3>Enter your email to continue</h3>
+            <form id="emailSubmitForm">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+        <p><small>By continuing, you agree to our Terms of Service and acknowledge you may see promotional content. No purchase necessary. Void where prohibited.</small></p>
+    </div>
+    
+    <footer>
+        <p>© 2025 Premium Gaming Hub. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <!-- Popunder Ad Script -->
+    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const continueButton = document.getElementById('continueButton');
+            const emailForm = document.getElementById('emailForm');
+            const emailSubmitForm = document.getElementById('emailSubmitForm');
+            
+            continueButton.addEventListener('click', function() {
+                continueButton.style.display = 'none';
+                emailForm.style.display = 'block';
+            });
+            
+            emailSubmitForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
