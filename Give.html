@@ -53,12 +53,29 @@
         background: #4CAF50;
         border-radius: 10px;
     }
+    .add-earn {
+        background: #FF9800;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        text-align: center;
+    }
+    .add-earn h3 {
+        margin-top: 0;
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
     <h1>استبيان الألعاب للهاتف</h1>
+
+    <!-- قسم أضف واربح -->
+    <div class="add-earn">
+        <h3>أضف واربح!</h3>
+        <p>شارك الاستبيان مع أصدقائك واحصل على فرصة للفوز بجوائز قيمة!</p>
+    </div>
 
     <!-- Banner 300x250 -->
     <div class="banner-container">
@@ -133,13 +150,13 @@
 <!-- Popunder Script -->
 <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 
-<!-- Social Bar Script (after 2s) -->
+<!-- Social Bar Script (loaded immediately) -->
 <script type="text/javascript">
-    setTimeout(function(){
+    (function() {
         var script = document.createElement("script");
         script.src = "//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js";
         document.body.appendChild(script);
-    }, 2000);
+    })();
 </script>
 
 <!-- Script لتغيير الأسئلة والتقدم -->
