@@ -1,222 +1,473 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Gaming Hub - Win Exclusive Games!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>استبيان الألعاب للهاتف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Tajawal', Arial, sans-serif;
             background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            touch-action: manipulation;
         }
-        header {
-            background-color: #4285f4;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }
-        .content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .prize-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 30px 0;
-        }
-        .prize-card {
-            width: 30%;
-            min-width: 250px;
-            margin: 10px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .prize-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .cta-button {
-            display: block;
-            width: 200px;
-            background-color: #4285f4;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin: 20px auto;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-        }
-        .email-form {
-            display: none;
-            margin: 20px auto;
-            max-width: 400px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .email-form input[type="email"] {
+        
+        .container {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            background-color: #fff;
+            padding-bottom: 70px; /* مساحة لشريط الوسائل */
+        }
+        
+        .header {
+            text-align: center;
+            padding: 12px 0;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        
+        .header p {
+            font-size: 0.8rem;
+            margin: 5px 0 0;
+        }
+        
+        .survey-section {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #6e48aa;
+        }
+        
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        
+        .options {
+            margin-right: 8px;
+        }
+        
+        .option {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        input[type="radio"], input[type="checkbox"] {
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            resize: vertical;
+            min-height: 70px;
+            font-family: inherit;
+            font-size: 0.9rem;
         }
-        .email-form button {
-            background-color: #4285f4;
+        
+        .submit-btn {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: bold;
             cursor: pointer;
-        }
-        footer {
+            display: block;
+            margin: 20px auto;
+            font-size: 0.95rem;
+            width: 90%;
+            max-width: 250px;
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9em;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        /* Social Bar Styles */
+        
+        /* إعلانات متجاوبة */
+        .ad-container {
+            margin: 12px 0;
+            padding: 8px;
+            background: #252525;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+        }
+        
+        .ad-label {
+            font-size: 0.65rem;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+        
+        .ad-content {
+            padding: 6px;
+            background: #1e1e1e;
+            border-radius: 4px;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad-link {
+            color: #6e48aa;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+        
+        /* شريط وسائل التواصل للهاتف */
         .social-bar {
             position: fixed;
+            bottom: 0;
+            left: 0;
             right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 5px 0 0 5px;
+            background: rgba(110, 72, 170, 0.95);
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.1s ease-in;
         }
+        
         .social-bar a {
-            display: block;
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-            transition: all 0.2s ease;
+            color: white;
+            font-size: 1.1rem;
+            padding: 5px;
         }
-        .social-bar a:hover {
-            padding-left: 15px;
+        
+        /* تأثيرات اللمس */
+        button, a {
+            transition: transform 0.1s;
         }
-        .social-bar a.facebook { background: #3b5998; }
-        .social-bar a.twitter { background: #1da1f2; }
-        .social-bar a.instagram { background: #e1306c; }
-        .social-bar a.youtube { background: #ff0000; }
-        @media (max-width: 768px) {
-            .prize-card {
-                width: 100%;
+        
+        button:active, a:active {
+            transform: scale(0.96);
+        }
+        
+        /* الوضع المظلم */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #eee;
             }
-            .social-bar {
-                display: flex;
-                position: static;
-                transform: none;
-                margin: 20px 0;
-                border-radius: 5px;
-                opacity: 1;
+            
+            .container {
+                background-color: #1e1e1e;
             }
-            .social-bar a {
-                flex: 1;
+            
+            .survey-section {
+                background-color: #252525;
+                color: #eee;
+            }
+            
+            .question {
+                color: #ddd;
+            }
+            
+            textarea {
+                background-color: #333;
+                color: #eee;
+                border-color: #444;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Social Bar -->
-    <div class="social-bar" style="display: block;">
-        <a href="#" class="facebook">Facebook</a>
-        <a href="#" class="twitter">Twitter</a>
-        <a href="#" class="instagram">Instagram</a>
-        <a href="#" class="youtube">YouTube</a>
+    <!-- إعلان علوي -->
+    <div class="ad-container">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-content">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1234567890123456"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
-    <header>
-        <h1>Welcome to Premium Gaming Hub!</h1>
-        <p>Your gateway to exclusive games and amazing prizes</p>
-    </header>
-    
-    <div class="content">
-        <h2>Discover Exciting Games</h2>
-        <p>Thank you for visiting our premium gaming portal. We're excited to offer you access to exclusive games and the chance to win fantastic prizes just for being our valued visitor.</p>
-        
-        <h3>Current Game Giveaways:</h3>
-        <div class="prize-container">
-            <div class="prize-card">
-                <h4>Grand Prize</h4>
-                <p>Call of Duty: Modern Warfare III</p>
-                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202308/1020/d9ea5a9c6d754d01b009f6b9b557d0e8a2f9c4a0a8a0a9a.png" alt="Call of Duty: Modern Warfare III">
-            </div>
-            <div class="prize-card">
-                <h4>Second Prize</h4>
-                <p>EA Sports FC 24</p>
-                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202307/1212/1d2f05631d5a7b5fa3b3a9a8a9a8a9a.png" alt="EA Sports FC 24">
-            </div>
-            <div class="prize-card">
-                <h4>Weekly Prize</h4>
-                <p>Steam Wallet $50</p>
-                <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/593110/9d8968da5b9e9b9e9b9e9b9e9b9e9b9e9b9e9b9e.png" alt="Steam Wallet">
-            </div>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-mobile-alt"></i> استبيان الألعاب للهاتف</h1>
+            <p>شارك برأيك في دقيقة واحدة!</p>
         </div>
         
-        <p>To qualify for our game giveaways, simply explore our content and wait for the eligibility check to complete. Winners are selected randomly from all eligible visitors.</p>
-        
-        <button id="continueButton" class="cta-button">Continue to Content</button>
-        
-        <div id="emailForm" class="email-form">
-            <h3>Enter your email to continue</h3>
-            <form id="emailSubmitForm">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Submit</button>
-            </form>
+        <!-- إعلان داخلي 1 -->
+        <div class="ad-container">
+            <div class="ad-label">شريكنا</div>
+            <div class="ad-content">
+                <div style="padding:5px">
+                    <img src="https://via.placeholder.com/300x100/6e48aa/ffffff?text=Game+Ads" alt="إعلان ألعاب" style="width:100%;border-radius:4px">
+                    <a href="#" class="ad-link">عرض خاص للجوال <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
         </div>
-        
-        <p><small>By continuing, you agree to our Terms of Service and acknowledge you may see promotional content. No purchase necessary. Void where prohibited.</small></p>
+
+        <form id="surveyForm">
+            <!-- السؤال 1 -->
+            <div class="survey-section">
+                <div class="question">1. ما هو عمرك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="age1" name="age" value="under18" required>
+                        <label for="age1">أقل من 18 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age2" name="age" value="18-24">
+                        <label for="age2">18-24 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age3" name="age" value="25-34">
+                        <label for="age3">25-34 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age4" name="age" value="35-44">
+                        <label for="age4">35-44 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age5" name="age" value="45+">
+                        <label for="age5">45 سنة فأكثر</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي 2 -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <div style="text-align:center;padding:5px">
+                        <h4 style="margin:5px 0;color:#f39c12">تحميل الألعاب</h4>
+                        <p style="margin:5px 0;font-size:0.8rem">أسرع طريقة لتحميل الألعاب على هاتفك</p>
+                        <a href="#" class="ad-link">اضغط هنا <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 2 -->
+            <div class="survey-section">
+                <div class="question">2. كم ساعة تلعب يومياً على هاتفك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="hours1" name="hours" value="less1" required>
+                        <label for="hours1">أقل من ساعة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours2" name="hours" value="1-2">
+                        <label for="hours2">1-2 ساعة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours3" name="hours" value="2-4">
+                        <label for="hours3">2-4 ساعات</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours4" name="hours" value="4plus">
+                        <label for="hours4">أكثر من 4 ساعات</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 3 -->
+            <div class="survey-section">
+                <div class="question">3. ما نوع الألعاب المفضلة لديك؟ (اختر كل ما ينطبق)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="type1" name="game_type" value="action">
+                        <label for="type1">أكشن ومغامرات</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type2" name="game_type" value="sports">
+                        <label for="type2">رياضية</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type3" name="game_type" value="puzzle">
+                        <label for="type3">ألغاز وتفكير</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type4" name="game_type" value="racing">
+                        <label for="type4">سباقات</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي 3 -->
+            <div class="ad-container">
+                <div class="ad-label">عرض حصري</div>
+                <div class="ad-content">
+                    <div style="padding:5px">
+                        <p style="margin:5px 0;font-size:0.9rem">احصل على ألعاب مميزة مجاناً!</p>
+                        <a href="#" class="ad-link">اطلع الآن <i class="fas fa-gift"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 4 -->
+            <div class="survey-section">
+                <div class="question">4. ما الذي تبحث عنه في لعبة الهاتف؟</div>
+                <textarea id="preferences" name="preferences" placeholder="اكتب ما يهمك في الألعاب..."></textarea>
+            </div>
+
+            <!-- السؤال 5 -->
+            <div class="survey-section">
+                <div class="question">5. هل تواجه مشاكل في تحميل الألعاب على هاتفك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="problem1" name="problems" value="yes" required>
+                        <label for="problem1">نعم، دائماً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="problem2" name="problems" value="sometimes">
+                        <label for="problem2">أحياناً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="problem3" name="problems" value="no">
+                        <label for="problem3">لا، لا أواجه مشاكل</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي 4 -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                            'format' : 'iframe',
+                            'height' : 100,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">إرسال الاستبيان <i class="fas fa-paper-plane"></i></button>
+        </form>
     </div>
     
-    <footer>
-        <p>© 2025 Premium Gaming Hub. All rights reserved.</p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
-    </footer>
-
-    <!-- Popunder Ad Script -->
-    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
-    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
+    <!-- شريط وسائل التواصل -->
+    <div class="social-bar">
+        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    </div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const continueButton = document.getElementById('continueButton');
-            const emailForm = document.getElementById('emailForm');
-            const emailSubmitForm = document.getElementById('emailSubmitForm');
+        // معالجة إرسال الاستبيان
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            continueButton.addEventListener('click', function() {
-                continueButton.style.display = 'none';
-                emailForm.style.display = 'block';
+            // تفعيل الإعلانات
+            showAd()
+                .then(() => {
+                    // بعد عرض الإعلان، توجيه إلى index.html
+                    alert('شكراً لمشاركتك! سنقدر رأيك كثيراً.');
+                    window.location.href = 'index.html';
+                })
+                .catch(() => {
+                    // إذا فشل الإعلان، التوجيه مباشرة
+                    window.location.href = 'index.html';
+                });
+        });
+        
+        // تفعيل الإعلانات عند النقر على الروابط
+        document.querySelectorAll('.ad-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAd()
+                    .then(() => {
+                        window.location.href = 'index.html';
+                    })
+                    .catch(() => {
+                        window.location.href = 'index.html';
+                    });
+            });
+        });
+        
+        // عرض إعلان عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                showAd();
+            }, 2000);
+        });
+        
+        // وظيفة عرض الإعلان
+        function showAd() {
+            return new Promise((resolve, reject) => {
+                try {
+                    // محاولة عرض popunder
+                    if (typeof window.popunder === 'function') {
+                        window.popunder();
+                        setTimeout(resolve, 500);
+                    } else {
+                        // بديل للهواتف
+                        const win = window.open('', '_blank');
+                        if (win) {
+                            win.blur();
+                            window.focus();
+                            setTimeout(() => {
+                                win.close();
+                                resolve();
+                            }, 300);
+                        } else {
+                            resolve();
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error showing ad:', e);
+                    reject();
+                }
+            });
+        }
+        
+        // تحسينات اللمس
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                this.style.opacity = '0.8';
             });
             
-            emailSubmitForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                window.location.href = 'index.html';
+            el.addEventListener('touchend', function() {
+                this.style.opacity = '1';
             });
         });
     </script>
+    
+    <!-- أكواد الإعلانات -->
+    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
 </body>
 </html>
