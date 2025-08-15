@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Games Survey</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .question {
+        margin: 15px 0;
+    }
+    .btn-direct {
+        display: block;
+        text-align: center;
+        background: #4CAF50;
+        color: #fff;
+        padding: 15px;
+        margin: 20px 0;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .banner-container {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    #progress-bar {
+        width: 100%;
+        background: #ddd;
+        border-radius: 10px;
+        margin: 15px 0;
+    }
+    #progress {
+        width: 0;
+        height: 20px;
+        background: #4CAF50;
+        border-radius: 10px;
+    }
+    .add-earn {
+        background: #FF9800;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        text-align: center;
+    }
+    .add-earn h3 {
+        margin-top: 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Mobile Games Survey</h1>
+
+    <!-- Add and Earn section -->
+    <div class="add-earn">
+        <h3>Add and Earn!</h3>
+        <p>Share the survey with your friends and get a chance to win valuable prizes!</p>
+    </div>
+
+    <!-- Banner 300x250 -->
+    <div class="banner-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+
+    <!-- Questions -->
+    <div class="question" data-step="1">
+        <label>How old are you?</label><br>
+        <input type="number" placeholder="Enter your age" style="width:100%; padding:8px;">
+    </div>
+
+    <div class="question" data-step="2" style="display:none;">
+        <label>What is your favorite type of games?</label><br>
+        <select style="width:100%; padding:8px;">
+            <option>Action</option>
+            <option>Sports</option>
+            <option>Strategy</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <div class="question" data-step="3" style="display:none;">
+        <label>How many hours do you play daily?</label><br>
+        <select style="width:100%; padding:8px;">
+            <option>Less than 1 hour</option>
+            <option>1-3 hours</option>
+            <option>3-5 hours</option>
+            <option>More than 5 hours</option>
+        </select>
+    </div>
+
+    <div class="question" data-step="4" style="display:none;">
+        <label>Do you play online games with friends?</label><br>
+        <select style="width:100%; padding:8px;">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </div>
+
+    <div class="question" data-step="5" style="display:none;">
+        <label>What is your preferred gaming device?</label><br>
+        <select style="width:100%; padding:8px;">
+            <option>Phone</option>
+            <option>Computer</option>
+            <option>Tablet</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <!-- Next Question Button -->
+    <button id="next-btn" style="padding:12px 20px; margin-top:15px; background:#2196F3; color:#fff; border:none; border-radius:6px; cursor:pointer;">Next</button>
+
+    <!-- Direct Link Button -->
+    <a href="https://www.profitableratecpm.com/gewf0kkwj?key=67fe7c435bd354d090004fa61807a0c2" class="btn-direct" target="_blank">Get Games Now</a>
+</div>
+
+<!-- Popunder Script -->
+<script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+
+<!-- Social Bar Script (loaded immediately) -->
+<script type="text/javascript">
+    (function() {
+        var script = document.createElement("script");
+        script.src = "//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js";
+        document.body.appendChild(script);
+    })();
+</script>
+
+<!-- Script for changing questions and progress -->
+<script>
+let currentStep = 1;
+const totalSteps = 5;
+const nextBtn = document.getElementById('next-btn');
+const progress = document.getElementById('progress');
+
+nextBtn.addEventListener('click', () => {
+    const currentQuestion = document.querySelector(`.question[data-step='${currentStep}']`);
+    if(currentQuestion) currentQuestion.style.display = 'none';
+    
+    currentStep++;
+    if(currentStep <= totalSteps){
+        const nextQuestion = document.querySelector(`.question[data-step='${currentStep}']`);
+        if(nextQuestion) nextQuestion.style.display = 'block';
+        progress.style.width = ((currentStep-1)/totalSteps)*100 + '%';
+    } else {
+        nextBtn.style.display = 'none';
+        progress.style.width = '100%';
+    }
+});
+</script>
+
+</body>
+</html>
