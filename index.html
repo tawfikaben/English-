@@ -3,557 +3,591 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Hub - Free Gaming Portal</title>
-    <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>GameVerse - Ultimate Gaming Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212;
-            color: #ffffff;
+        * {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .game-card {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
-        .game-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 2px solid #6e48aa;
-        }
-        .game-info {
-            flex: 1;
-        }
-        .game-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #6e48aa;
-        }
-        .action-btn, .more-btn {
-            background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 120px;
-            text-align: center;
-            margin: 5px;
-        }
-        .more-btn {
-            background: linear-gradient(to right, #9b59b6, #8E44AD);
-            display: block;
-            margin: 20px auto;
-            width: 200px;
-        }
-        .btn-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .ad-container {
-            margin: 25px 0;
-            padding: 10px;
-            background: #252525;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .highlight {
-            color: #f39c12;
-            font-weight: bold;
-        }
-        .trending-badge {
-            background: #e74c3c;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .exclusive-badge {
-            background: #9b59b6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .game-details {
-            display: none;
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .game-details h2 {
-            color: #6e48aa;
-            margin-top: 0;
-        }
-        .close-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Social Media Bar Styles - تم التعديل هنا */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .banner-ad {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .ad-container {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .leaderboard-ad {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+        
+        .leaderboard-container {
+            width: 468px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .native-banner {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 0 20px;
+        }
+        
+        .native-banner-container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
         .social-bar {
             position: fixed;
-            bottom: -100px;
-            left: 0;
             right: 0;
-            background: rgba(110, 72, 170, 0.95);
-            padding: 15px 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
-            transition: bottom 0.5s ease, transform 0.5s ease;
-            transform: translateY(100%);
-            z-index: 1000;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px 5px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px 0 0 10px;
+            backdrop-filter: blur(5px);
         }
-        .social-bar.visible {
-            bottom: 0;
-            transform: translateY(0);
-        }
+        
         .social-bar a {
-            color: white;
-            font-size: 28px;
-            margin: 0 20px;
-            transition: all 0.3s;
-            text-decoration: none;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .social-bar a:hover {
-            transform: scale(1.2) translateY(-5px);
-        }
-        .facebook:hover { color: #3b5998; }
-        .twitter:hover { color: #1da1f2; }
-        .instagram:hover { color: #e1306c; }
-        .youtube:hover { color: #ff0000; }
-        .whatsapp:hover { color: #25d366; }
-        .close-social {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
             transition: all 0.3s;
         }
-        .close-social:hover {
-            background: rgba(255,255,255,0.2);
-            color: #e74c3c;
+        
+        .social-bar a:hover {
+            transform: translateY(-3px);
+            background: #0eb1d2;
         }
-        .social-message {
+        
+        header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0eb1d2;
+            text-shadow: 0 0 10px rgba(14, 177, 210, 0.5);
+        }
+        
+        .logo span {
+            color: #ff7700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #0eb1d2;
+        }
+        
+        nav ul li a::after {
+            content: '';
             position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #0eb1d2;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff7700, #ff0055);
             color: white;
-            font-size: 14px;
-            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 119, 0, 0.4);
+            animation: pulse 2s infinite, fadeIn 2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 119, 0, 0.6);
+        }
+        
+        .featured-games {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #0eb1d2;
+            animation: fadeIn 1s ease;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .game-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .game-card:hover .game-img {
+            transform: scale(1.1);
+        }
+        
+        .game-content {
+            padding: 20px;
+        }
+        
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff7700;
+        }
+        
+        .game-desc {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .game-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0eb1d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .game-button:hover {
+            background: #ff7700;
+        }
+        
+        footer {
+            background: #0d0d1a;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: #0eb1d2;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0eb1d2;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .social-bar {
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                flex-direction: row;
+                justify-content: center;
+                border-radius: 10px 10px 0 0;
+                transform: none;
+                padding: 10px;
+            }
+            
+            .leaderboard-container {
+                width: 100%;
+                max-width: 468px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .leaderboard-container {
+                height: 50px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Top Banner Ad -->
-    <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    </div>
-
-    <div class="container">
-        <div class="header">
-            <h1>🎮 Premium Games Hub</h1>
-            <p>Your Ultimate Gaming Portal</p>
-        </div>
-
-        <!-- GTA 5 Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="GTA 5 Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
-                <div>Open World | 3.2GB | 4.9★ Rating</div>
-                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
-            </div>
-            <button class="action-btn" data-game="gta5">VIEW DETAILS</button>
-        </div>
-
-        <!-- Game Details for GTA 5 -->
-        <div class="game-details" id="gta5-details">
-            <h2>GTA 5 Mobile - Complete Edition</h2>
-            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices. This version includes all story mode missions, online multiplayer, and exclusive mobile features.</p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Full HD graphics optimized for mobile</li>
-                <li>All story missions from original game</li>
-                <li>Exclusive mobile-only vehicles and weapons</li>
-                <li>Customizable controls for touchscreen</li>
-                <li>Regular updates with new content</li>
-            </ul>
-            <p>GTA 5 Mobile brings the complete Los Santos experience to your smartphone with enhanced visuals and performance. The game has been downloaded over 50 million times worldwide and maintains a 4.9/5 rating from players.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- Native Ad -->
+    <div class="banner-ad">
         <div class="ad-container">
-            <div class="ad-label">Recommended</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+        </div>
+    </div>
+    
+    <div class="social-bar">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Game<span>Verse</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Enter a Universe of Infinite Gaming</h1>
+                <p>Experience next-level gameplay, stunning graphics, and immersive worlds. Join millions of players worldwide!</p>
+                <a href="#" class="cta-button" id="playNowBtn">Play Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="leaderboard-ad">
+        <div class="leaderboard-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '03dc2179cd2888bd95e81074da5ad4d4',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/03dc2179cd2888bd95e81074da5ad4d4/invoke.js"></script>
+        </div>
+    </div>
+    
+    <div class="native-banner">
+        <div class="native-banner-container">
             <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
-
-        <!-- Call of Duty Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Call of Duty Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
-                <div>FPS | 2.4GB | 4.8★ Rating</div>
-                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
-            </div>
-            <button class="action-btn" data-game="cod">VIEW DETAILS</button>
-        </div>
-
-        <!-- Game Details for Call of Duty -->
-        <div class="game-details" id="cod-details">
-            <h2>Call of Duty Mobile - Season 6 Update</h2>
-            <p>The latest update brings new maps, weapons, and the return of fan-favorite game modes to the best FPS experience on mobile.</p>
-            <h3>What's New:</h3>
-            <ul>
-                <li>New Battle Pass with 50 tiers of rewards</li>
-                <li>2 new multiplayer maps</li>
-                <li>3 new functional weapons</li>
-                <li>Zombie mode improvements</li>
-                <li>Performance optimizations</li>
-            </ul>
-            <p>With over 300 million downloads worldwide, Call of Duty Mobile continues to set the standard for mobile shooters. The current season introduces the most requested features from the community.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- Asphalt 9: Legends -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Asphalt 9: Legends" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
-                <div>Racing | 2.1GB | 4.7★ Rating</div>
-                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
-            </div>
-            <button class="action-btn" data-game="asphalt9">VIEW DETAILS</button>
-        </div>
-
-        <!-- Game Details for Asphalt 9 -->
-        <div class="game-details" id="asphalt9-details">
-            <h2>Asphalt 9: Legends - Ultimate Edition</h2>
-            <p>The most visually stunning racing game on mobile now with all cars and tracks unlocked in this exclusive edition.</p>
-            <h3>Features:</h3>
-            <ul>
-                <li>Over 150 hypercars from top manufacturers</li>
-                <li>70+ tracks in stunning locations worldwide</li>
-                <li>All DLC content included</li>
-                <li>Customizable controls and HUD</li>
-                <li>Regular events with exclusive rewards</li>
-            </ul>
-            <p>Asphalt 9: Legends redefines mobile racing with console-quality graphics and physics. This exclusive version gives you access to all content without restrictions, valued at over $200 in the standard version.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- More Games Button -->
-        <div class="btn-container">
-            <button class="more-btn">SHOW MORE GAMES</button>
-        </div>
     </div>
+    
+    <section class="featured-games">
+        <div class="container">
+            <h2 class="section-title">Featured Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cyber Quest" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Cyber Quest</h3>
+                        <p class="game-desc">Embark on an epic journey through neon-lit cities and defeat rogue AI in this action-packed RPG.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Download</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Battlefield Legends" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Battlefield Legends</h3>
+                        <p class="game-desc">Join massive 64-player battles with realistic physics and destructible environments.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stellar Conquest" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Stellar Conquest</h3>
+                        <p class="game-desc">Build your empire across the galaxy, form alliances, and conquer star systems in this 4X strategy game.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Games</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            
+            <p class="copyright">© 2023 GameVerse. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <!-- Social Media Bar - تم التعديل هنا -->
-    <div class="social-bar" id="socialBar">
-        <div class="social-message">تابعنا للحصول على أحدث الألعاب!</div>
-        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <button class="close-social" id="closeSocial">&times;</button>
-    </div>
-
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
     <script>
-        // Popunder configuration
-        const popunderConfig = {
-            scriptUrl: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
-            behavior: {
-                onLoad: {
-                    enabled: true,
-                    delay: 5000,
-                    count: 1
-                },
-                onClick: {
-                    enabled: true,
-                    delay: 1000,
-                    count: 1,
-                    cooldown: 30000
-                }
-            }
-        };
-
-        // State management
-        let popunderState = {
-            lastTrigger: 0,
-            scriptLoaded: false,
-            isTriggering: false
-        };
-
-        // Load the popunder script
-        function loadPopunderScript(callback) {
-            if (popunderState.scriptLoaded) {
-                if (callback) callback();
-                return;
-            }
-            
-            const script = document.createElement('script');
-            script.src = popunderConfig.scriptUrl;
-            script.async = true;
-            
-            script.onload = function() {
-                popunderState.scriptLoaded = true;
-                if (callback) callback();
-            };
-            
-            script.onerror = function() {
-                console.error('Popunder script failed to load');
-            };
-            
-            document.body.appendChild(script);
-        }
-
-        // Trigger popunder safely
-        function triggerPopunder(count = 1, delayBetween = 500) {
-            const now = Date.now();
-            
-            if (popunderState.isTriggering || 
-                now - popunderState.lastTrigger < popunderConfig.behavior.onClick.cooldown) {
-                return;
-            }
-            
-            popunderState.isTriggering = true;
-            popunderState.lastTrigger = now;
-            
-            loadPopunderScript(function() {
-                for (let i = 0; i < count; i++) {
-                    setTimeout(function() {
-                        try {
-                            if (typeof window.popunder === 'function') {
-                                window.popunder();
-                            } else {
-                                const win = window.open('about:blank', '_blank');
-                                if (win) {
-                                    win.blur();
-                                    window.focus();
-                                    setTimeout(() => win.close(), 100);
-                                }
-                            }
-                        } catch (e) {
-                            console.error('Popunder error:', e);
-                        }
-                    }, i * delayBetween);
-                }
-                
-                setTimeout(() => {
-                    popunderState.isTriggering = false;
-                }, count * delayBetween + 1000);
-            });
-        }
-
-        // Show game details
-        function showGameDetails(gameId) {
-            document.querySelectorAll('.game-details').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            const detailsEl = document.getElementById(`${gameId}-details`);
-            if (detailsEl) {
-                detailsEl.style.display = 'block';
-                detailsEl.scrollIntoView({ behavior: 'smooth' });
-            }
-            
-            triggerPopunder(1, 500);
-        }
-
-        // Close game details
-        function closeGameDetails() {
-            document.querySelectorAll('.game-details').forEach(el => {
-                el.style.display = 'none';
-            });
-        }
-
-        // Initialize the popunder system
-        function initPopunderSystem() {
-            // On Load Trigger
-            if (popunderConfig.behavior.onLoad.enabled) {
-                setTimeout(() => {
-                    triggerPopunder(
-                        popunderConfig.behavior.onLoad.count,
-                        500
-                    );
-                }, popunderConfig.behavior.onLoad.delay);
-            }
-            
-            // Click Trigger for general clicks
-            if (popunderConfig.behavior.onClick.enabled) {
-                document.addEventListener('click', function(e) {
-                    if (e.target.closest('button')) return;
-                    
-                    setTimeout(() => {
-                        triggerPopunder(
-                            popunderConfig.behavior.onClick.count,
-                            popunderConfig.behavior.onClick.delay
-                        );
-                    }, 200);
-                });
-            }
-            
-            // Game details buttons
-            document.querySelectorAll('.action-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const gameId = this.getAttribute('data-game');
-                    showGameDetails(gameId);
-                });
-            });
-            
-            // Close buttons
-            document.querySelectorAll('.close-btn').forEach(btn => {
-                btn.addEventListener('click', closeGameDetails);
-            });
-            
-            // More Games Button
-            document.querySelector('.more-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                const button = this;
-                const originalText = button.innerHTML;
-                
-                button.innerHTML = 'LOADING...';
-                button.disabled = true;
-                
-                triggerPopunder(1, 500);
-                
-                setTimeout(() => {
-                    alert('More games loaded!');
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 1500);
-            });
-        }
-
-        // Show social media bar after 0.5 seconds
-        function showSocialBar() {
-            setTimeout(() => {
-                const socialBar = document.getElementById('socialBar');
-                if (socialBar) {
-                    socialBar.classList.add('visible');
-                }
-            }, 500);
-        }
-
-        // Show social bar on scroll up
-        function setupScrollBehavior() {
-            let lastScrollPosition = 0;
-            window.addEventListener('scroll', function() {
-                const currentScrollPosition = window.pageYOffset;
-                const socialBar = document.getElementById('socialBar');
-                
-                if (currentScrollPosition < lastScrollPosition) {
-                    // Scrolling up
-                    if (socialBar) {
-                        socialBar.classList.add('visible');
-                    }
-                }
-                
-                lastScrollPosition = currentScrollPosition;
-            });
-        }
-
-        // Close social media bar
-        function setupSocialBarClose() {
-            const closeBtn = document.getElementById('closeSocial');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    const socialBar = document.getElementById('socialBar');
-                    if (socialBar) {
-                        socialBar.classList.remove('visible');
-                    }
-                });
-            }
-        }
-
-        // Start all systems when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            initPopunderSystem();
-            showSocialBar();
-            setupScrollBehavior();
-            setupSocialBarClose();
+            // Add event listeners to buttons that should trigger ads
+            const adButtons = document.querySelectorAll('[data-ad-trigger], #playNowBtn');
+            
+            adButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulate a delay before any potential redirect
+                    setTimeout(function() {
+                        // This is where the ad script would typically trigger
+                        // For demonstration, we'll just open a new window
+                        window.open('https://example.com/game', '_blank');
+                    }, 500);
+                });
+            });
+            
+            // Trigger popunder on page load
+            setTimeout(function() {
+                // This would be handled by the external ad script
+                // For demonstration, we're just logging to console
+                console.log('Popunder ad would trigger here');
+            }, 3000);
         });
     </script>
-    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
-    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
 </body>
 </html>
