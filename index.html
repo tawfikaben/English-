@@ -13,7 +13,7 @@
         body{background:#0d0d1a;color:#fff;overflow-x:hidden;line-height:1.6}
         .container{max-width:1200px;margin:0 auto;padding:0 15px}
         
-        /* Ad Styles */
+        /* Ad Styles - Prioritizing higher CPM placements */
         .ad-banner {display:flex;justify-content:center;padding:10px 0;background:#070711;width:100%;}
         .ad-banner-container{width:728px;height:90px;background:rgba(255,255,255,0.03);border-radius:6px;overflow:hidden;display: flex;justify-content: center;align-items: center;color: #666;font-size: 14px;}
         
@@ -23,7 +23,7 @@
         
         .in-content-ad {margin: 30px 0;display: flex;justify-content: center;}
         
-        /* Sidebar for ads */
+        /* Sidebar for ads - prioritizing 300x250 which has decent CPM */
         .sidebar {width: 300px;float: right;margin-left: 20px;}
         .sidebar-widget {background: rgba(255,255,255,0.03);border-radius: 8px;padding: 15px;margin-bottom: 20px;}
         .sidebar-widget h3 {color: #0eb1d2;margin-bottom: 15px;padding-bottom: 8px;border-bottom: 1px solid rgba(255,255,255,0.1);}
@@ -60,6 +60,10 @@
         .game-desc{color:#999;margin-bottom:15px;font-size:0.9rem;line-height: 1.5;}
         .game-button{display:inline-block;padding:8px 16px;background:#0eb1d2;color:white;text-decoration:none;border-radius:4px;font-weight:600;transition:background 0.2s;border:none;cursor:pointer}
         .game-button:hover{background:#ff7700}
+        
+        /* Native ad styling to blend with content */
+        .native-ad-wrapper {background: linear-gradient(45deg, #1a1a2e, #0d0d1a);border-radius: 12px;padding: 20px;margin: 40px 0;border: 1px solid rgba(255,255,255,0.05);}
+        .native-ad-label {color: #999;font-size: 0.8rem;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 10px;text-align: center;}
         
         .newsletter {background: linear-gradient(45deg, #1a1a2e, #0d0d1a);padding: 60px 0;text-align: center;margin: 40px 0;}
         .newsletter h2 {margin-bottom: 20px;}
@@ -114,19 +118,19 @@
     </style>
 </head>
 <body>
-    <!-- Top Banner Ad -->
+    <!-- Top Banner Ad (728x90) -->
     <div class="ad-banner">
         <div class="ad-banner-container">
             <script type="text/javascript">
                 atOptions = {
-                    'key' : '2fe5bd5a3e35b58a21af728a6e20fee7',
+                    'key' : '27387970',
                     'format' : 'iframe',
                     'height' : 90,
                     'width' : 728,
                     'params' : {}
                 };
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2fe5bd5a3e35b58a21af728a6e20fee7/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/27387970/invoke.js"></script>
         </div>
     </div>
 
@@ -159,11 +163,19 @@
     <div class="container">
         <div class="main-content">
             <div class="content">
-                <!-- In-content Ad -->
+                <!-- In-content Leaderboard Ad (468x60) -->
                 <div class="in-content-ad">
                     <div class="ad-leaderboard-container">
-                        <script type="text/javascript">atOptions = {'key' : '03dc2179cd2888bd95e81074da5ad4d4','format' : 'iframe','height' : 60,'width' : 468,'params' : {}}</script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/03dc2179cd2888bd95e81074da5ad4d4/invoke.js"></script>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '26732762',
+                                'format' : 'iframe',
+                                'height' : 60,
+                                'width' : 468,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/26732762/invoke.js"></script>
                     </div>
                 </div>
 
@@ -189,7 +201,7 @@
                         </div>
                         
                         <div class="game-card">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMGQwZDFhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZilleD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2ZmNzcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlN0ZWxsYXIgQ29ucXVlc3Q8L3RleHQ+PC9zdmc+" alt="Stellar Conquest" class="game-img">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMGQwZDFhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2ZmNzcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlN0ZWxsYXIgQ29ucXVlc3Q8L3RleHQ+PC9zdmc+" alt="Stellar Conquest" class="game-img">
                             <div class="game-content">
                                 <h3 class="game-title">Stellar Conquest</h3>
                                 <p class="game-desc">Build your empire across the galaxy, form alliances, and conquer star systems in this 4X strategy game.</p>
@@ -199,11 +211,36 @@
                     </div>
                 </section>
 
-                <!-- In-content Ad -->
+                <!-- In-content Box Ad (300x250) -->
                 <div class="in-content-ad">
                     <div class="ad-container">
-                        <script type="text/javascript">atOptions = {'key' : '3043529ca5c93c815dd6d1dd6665778c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}}</script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '26694241',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/26694241/invoke.js"></script>
+                    </div>
+                </div>
+
+                <!-- Native Ad (High CPM) - Placed prominently -->
+                <div class="native-ad-wrapper">
+                    <div class="native-ad-label">Sponsored</div>
+                    <div class="ad-native-container">
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '26816267',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/26816267/invoke.js"></script>
                     </div>
                 </div>
 
@@ -228,14 +265,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Native Ad -->
-                <div class="ad-native">
-                    <div class="ad-native-container">
-                        <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-                        <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-                    </div>
-                </div>
             </div>
 
             <!-- Sidebar -->
@@ -243,8 +272,16 @@
                 <div class="sidebar-widget">
                     <h3>Sponsored</h3>
                     <div class="ad-container">
-                        <script type="text/javascript">atOptions = {'key' : '3043529ca5c93c815dd6d1dd6665778c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}}</script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '26694241',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/26694241/invoke.js"></script>
                     </div>
                 </div>
                 
@@ -270,9 +307,16 @@
                 <div class="sidebar-widget">
                     <h3>Trending Games</h3>
                     <div class="ad-container">
-                        <!-- Another ad space -->
-                        <script type="text/javascript">atOptions = {'key' : '3043529ca5c93c815dd6d1dd6665778c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}}</script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '26694241',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/26694241/invoke.js"></script>
                     </div>
                 </div>
             </div>
@@ -320,7 +364,8 @@
     <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
     <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
     
-    <script>
+    <!-- Popunder Script -->
+    <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu');
@@ -330,13 +375,23 @@
                 mainNav.classList.toggle('active');
             });
             
-            // Optimized ad triggering
+            // Optimized ad triggering with popunder
             const adButtons = document.querySelectorAll('[data-ad-trigger], #playNowBtn');
             
             adButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    window.open('https://example.com/game', '_blank');
+                    
+                    // Trigger popunder
+                    var popunderScript = document.createElement('script');
+                    popunderScript.type = 'text/javascript';
+                    popunderScript.src = '//www.highperformanceformat.com/26695266/invoke.js';
+                    document.body.appendChild(popunderScript);
+                    
+                    // Also open the game page
+                    setTimeout(function() {
+                        window.open('https://example.com/game', '_blank');
+                    }, 500);
                 });
             });
             
@@ -348,6 +403,12 @@
                 alert(`Thank you for subscribing with: ${email}`);
                 this.reset();
             });
+
+            // Social bar script
+            var socialBarScript = document.createElement('script');
+            socialBarScript.type = 'text/javascript';
+            socialBarScript.src = '//www.highperformanceformat.com/26694173/invoke.js';
+            document.body.appendChild(socialBarScript);
         });
     </script>
 </body>
