@@ -12,6 +12,10 @@
         body{background:#0d0d1a;color:#fff;overflow-x:hidden}
         .container{max-width:1200px;margin:0 auto;padding:0 15px}
         
+        /* New Banner Ad Style */
+        .ad-banner {display:flex;justify-content:center;padding:10px 0;background:#070711;width:100%;}
+        .ad-banner-container{width:728px;height:90px;background:rgba(255,255,255,0.03);border-radius:6px;overflow:hidden}
+        
         /* Ads Styles */
         .ad-top{display:flex;justify-content:center;padding:8px 0;background:#070711}
         .ad-leaderboard{display:flex;justify-content:center;padding:12px 0;background:#070711;margin:15px 0}
@@ -61,16 +65,34 @@
             h1{font-size:2rem}
             .section-title{font-size:1.7rem}
             .ad-leaderboard-container{width:100%;max-width:468px;height:50px}
+            .ad-banner-container{width:100%;max-width:728px;height:90px}
             .games-grid{grid-template-columns:1fr}
         }
         @media (max-width:480px){
             h1{font-size:1.7rem}
             .hero{padding:40px 0}
             .cta-button{padding:10px 25px;font-size:1rem}
+            .ad-banner-container{height:75px}
         }
     </style>
 </head>
 <body>
+    <!-- New 728x90 Banner Ad -->
+    <div class="ad-banner">
+        <div class="ad-banner-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2fe5bd5a3e35b58a21af728a6e20fee7',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2fe5bd5a3e35b58a21af728a6e20fee7/invoke.js"></script>
+        </div>
+    </div>
+
     <!-- Top Ad -->
     <div class="ad-top">
         <div class="ad-container">
